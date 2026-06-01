@@ -45,8 +45,8 @@
   }
   .nav { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
   .brand { display: flex; align-items: center; gap: 14px; }
-  .brand img { width: 52px; height: 52px; transition: width .4s, height .4s; }
-  header.scrolled .brand img { width: 42px; height: 42px; }
+  .brand img { width: 90px; height: 90px; transition: width .4s, height .4s; }
+  header.scrolled .brand img { width: 72px; height: 72px; }
   .brand .bname { font-family: var(--font-display); font-weight: 700; text-transform: uppercase; letter-spacing: .02em; font-size: 1.04rem; line-height: 1.05; }
   .brand .bsub { font-family: var(--font-sans); font-size: 10px; letter-spacing: .22em; text-transform: uppercase; color: var(--text-soft); }
   .menu { display: flex; align-items: center; gap: 30px; }
@@ -80,8 +80,8 @@
       linear-gradient(90deg, rgba(4,22,31,.94) 0%, rgba(4,22,31,.74) 40%, rgba(6,30,43,.40) 78%, rgba(8,40,56,.28) 100%),
       linear-gradient(0deg, var(--ink-900) 2%, rgba(8,40,56,.18) 38%, transparent 62%);
   }
-  .hero-inner { position: relative; z-index: 2; max-width: 880px; }
-  .hero h1 { font-size: var(--t-4xl); margin: 20px 0 26px; }
+  .hero-inner { position: relative; z-index: 2; width: 100%; }
+  .hero h1 { font-size: var(--t-4xl); margin: 20px 0 26px; max-width: 820px; }
   .hero h1 .accent { color: var(--sand); }
   .hero p.lede { font-size: var(--t-lg); color: var(--text-soft); max-width: 620px; }
   .hero .meta-row { display: flex; flex-wrap: wrap; gap: 10px 28px; margin-top: 36px; font-size: var(--t-sm); color: var(--text-mute); }
@@ -110,7 +110,7 @@
   .dcard-photo { position: relative; aspect-ratio: 4/5; overflow: hidden; background: var(--ink-800); }
   .dcard-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; z-index: 1; }
   .dcard-photo .mono { position: absolute; inset: 0; font-size: 6.5rem; }
-  .dcard-body { padding: 26px 26px 28px; display: flex; flex-direction: column; flex: 1; }
+  .dcard-body { padding: 26px 26px 28px; display: flex; flex-direction: column; flex: 1; border-top: 1px solid rgba(192,184,168,.22); }
   .dcard-body .eyebrow { margin-bottom: 10px; }
   .dname { font-size: clamp(1.5rem, 2.2vw, 1.95rem); margin-bottom: 12px; }
   .dintro { color: var(--text-soft); font-size: var(--t-sm); margin-bottom: 18px; }
@@ -118,9 +118,9 @@
   .dcard .readbio { margin-top: auto; }
   .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
   .chip {
-    font-size: var(--t-xs); letter-spacing: .04em; color: var(--text-soft);
-    padding: 7px 14px; border-radius: var(--r-pill); background: var(--ink-800);
-    border: 1px solid var(--line);
+    font-size: var(--t-xs); letter-spacing: .04em; color: var(--sand-lt);
+    padding: 7px 14px; border-radius: var(--r-pill); background: rgba(192,184,168,.07);
+    border: 1px solid rgba(192,184,168,.26);
   }
 
   /* ---------- Team grid ---------- */
@@ -147,13 +147,15 @@
     color: var(--ink-900); font-family: var(--font-display); font-weight: 800; font-size: 5.5rem;
   }
   .mono small { position: absolute; bottom: 14px; font-family: var(--font-sans); font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: rgba(8,40,56,.55); }
-  .card-body { padding: 24px 24px 28px; }
+  .card-body { padding: 24px 24px 28px; border-top: 1px solid rgba(192,184,168,.20); }
   .card-body .name { font-family: var(--font-display); font-weight: 700; font-size: 1.6rem; }
   .card-body .cred { color: var(--copper); font-size: var(--t-xs); letter-spacing: .12em; text-transform: uppercase; font-weight: 600; margin: 6px 0 14px; }
   .card-body p { color: var(--text-soft); font-size: var(--t-sm); margin-bottom: 18px; }
   .readbio { font-size: var(--t-sm); font-weight: 600; color: var(--text); display: inline-flex; align-items: center; gap: 8px; cursor: pointer; background: none; border: none; font-family: inherit; }
   .readbio .arr { color: var(--copper); transition: transform .25s; }
   .readbio:hover .arr { transform: translateX(4px); }
+  .dcard:hover .readbio, .card:hover .readbio { color: var(--copper-bright); }
+  .dcard:hover .readbio .arr, .card:hover .readbio .arr { transform: translateX(4px); }
   /* ghost / join card */
   .card.ghost {
     background: transparent; border-style: dashed; display: flex; flex-direction: column;
@@ -205,6 +207,7 @@
   @keyframes pop { from { opacity: 0; transform: translateY(16px) scale(.98); } to { opacity:1; transform: none; } }
   .modal-card .mc-cred { color: var(--copper); font-size: var(--t-xs); letter-spacing: .14em; text-transform: uppercase; font-weight: 600; }
   .modal-card h3 { font-family: var(--font-display); font-weight: 700; font-size: var(--t-xl); margin: 8px 0 18px; }
+  .modal-card .mc-sec { color: var(--copper); font-size: var(--t-xs); letter-spacing: .18em; text-transform: uppercase; font-weight: 700; margin: 24px 0 8px; }
   .modal-card p { color: var(--text-soft); margin-bottom: 14px; font-size: var(--t-sm); }
   .modal-card .mc-quote { font-family: var(--font-accent); font-weight: 600; color: var(--sand); font-size: var(--t-lg); line-height: 1.25; border-left: 3px solid var(--copper); padding-left: 18px; margin: 18px 0; }
   .modal-card .mc-fig { margin: 6px 0 18px; }
@@ -240,12 +243,8 @@
 <!-- ===== Header ===== -->
 <header id="hdr">
   <div class="wrap nav">
-    <a class="brand" href="index.html">
-      <img src="assets/logo/logo-plate.png" alt="Jackson Veterinary Clinic">
-      <span>
-        <span class="bname">Jackson Veterinary Clinic</span><br>
-        <span class="bsub">Est. 1981 · Jackson, GA</span>
-      </span>
+    <a class="brand" href="index.html" aria-label="Jackson Veterinary Clinic — Est. 1981, Jackson GA">
+      <img src="assets/logo/logo-badge.png" alt="Jackson Veterinary Clinic">
     </a>
     <nav class="menu" id="menu">
       <a href="index.html">Home</a>
@@ -272,8 +271,6 @@
     <p class="lede reveal">Three generations of care in one small Georgia town. The faces here grew up down the road — a few were your classmates, one or two might have been your teachers.</p>
     <div class="meta-row reveal">
       <span><i class="dotc"></i> <b>Since 1981</b></span>
-      <span><i class="dotc"></i> <b>Father &amp; son</b> on the door</span>
-      <span><i class="dotc"></i> Butts County born &amp; raised</span>
     </div>
   </div>
 </section>
@@ -296,11 +293,6 @@
         <span class="eyebrow">Owner · Doctor of Veterinary Medicine</span>
         <h3 class="display dname">Dr. Andy Burdette</h3>
         <p class="dintro">Hometown son, West Point graduate, and Army combat veteran. He came home to Jackson in 2018 and bought his father's practice in 2023 — redirecting a life of service into caring for the town's pets.</p>
-        <div class="chips">
-          <span class="chip">West Point</span>
-          <span class="chip">U.S. Army Officer</span>
-          <span class="chip">Jackson, born &amp; raised</span>
-        </div>
         <button class="readbio" data-bio="andy">Read full bio <span class="arr">→</span></button>
       </div>
     </article>
@@ -312,11 +304,6 @@
         <span class="eyebrow">Founder · Doctor of Veterinary Medicine</span>
         <h3 class="display dname">Dr. Alan Burdette</h3>
         <p class="dintro">Founded the clinic in 1981 and spent four-plus decades as the face of veterinary medicine in this town. Still in surgery Tuesdays and Thursdays — retirement isn't really his thing.</p>
-        <div class="chips">
-          <span class="chip">Founder · 1981</span>
-          <span class="chip">In-clinic Tue–Thu</span>
-          <span class="chip">UGA, 1978</span>
-        </div>
         <button class="readbio" data-bio="alan">Read full bio <span class="arr">→</span></button>
       </div>
     </article>
@@ -375,7 +362,7 @@
   <div class="wrap">
     <div class="fgrid">
       <div class="fbrand">
-        <img src="assets/logo/logo-plate.png" alt="Jackson Veterinary Clinic">
+        <img src="assets/logo/logo-badge.png" alt="Jackson Veterinary Clinic">
         <div>
           <div class="bname">Jackson Veterinary Clinic</div>
           <p>Family-owned veterinary care for the pets of Butts County since 1981.</p>
@@ -440,19 +427,42 @@
       name: 'Dr. Andy Burdette',
       cred: 'Owner · Doctor of Veterinary Medicine',
       html: `
-        <p>Andy started school in Jackson the same year his father opened the clinic, and stayed through twelfth grade. In 1997 he left for the United States Military Academy at West Point, served as an Army officer, and deployed overseas in combat — carrying West Point's charge of character and service long after he hung up the uniform.</p>
-        <figure class="mc-fig"><img src="assets/images/dr-andy-iraq.jpg" alt="Andy Burdette serving overseas in Iraq, 2005"><figcaption>Overseas · Iraq, 2005</figcaption></figure>
-        <p class="mc-quote">He didn't leave service behind when he left the Army. He redirected it.</p>
-        <p>After more than twenty years away, he came home. In November 2023 he bought the practice from his father — the same clinic that's cared for Butts County for four decades. Looking after the pets of Jackson, for Andy, is the same calling pointed in a new direction: taking care of the family members who happen to have four legs.</p>
+        <p class="mc-sec">A Hometown Story</p>
+        <p>Jackson, Georgia isn’t just where Dr. Andy Burdette practices veterinary medicine — it’s where he grew up. His family moved to Jackson in 1981, the same year his father opened Jackson Veterinary Clinic. Andy attended school here from kindergarten through twelfth grade, building roots in a community that would later become the center of his professional life. Some of his clients today were once his teachers. Some were his classmates.</p>
+
+        <p class="mc-sec">A Life of Service</p>
+        <p>In June of 1997, Andy left Jackson to attend the United States Military Academy at West Point — one of the most demanding institutions in the country. West Point’s mission is to build leaders of character committed to a lifetime of service to the Army and the Nation. Andy took that mission seriously. He served as an Army officer, deploying overseas in combat, and carried those values of duty, commitment, and service long after he hung up the uniform.</p>
+        <figure class="mc-fig"><img src="assets/images/dr-andy-iraq.jpg" alt="Dr. Andy Burdette serving overseas in combat"><figcaption>Overseas · Iraq, 2005</figcaption></figure>
+
+        <p class="mc-sec">Coming Home</p>
+        <p>After more than 20 years away, Dr. Burdette returned to Jackson in June of 2018. In November of 2023, he purchased the practice from his father — the same clinic that has served this community for over four decades. His parents still live in Jackson, in the same house they bought in 1981. Coming back wasn’t just a career move. It was a commitment to the town that shaped him.</p>
+
+        <p class="mc-sec">Why Veterinary Medicine</p>
+        <p>When Dr. Burdette left the Army, he didn’t leave behind the idea of service — he redirected it. He had grown up around veterinary medicine through his father and understood its importance. But what truly drew him in was something deeper: the bond between people and their pets. Research shows that 95% of pet owners consider their animals family members. That relationship — built on unconditional love, trust, and companionship — is one of the most meaningful connections in a person’s life. Dr. Burdette wanted to protect it.</p>
+        <p>For him, caring for the pets of Jackson isn’t just a profession. It’s a way of continuing to serve the community he loves — by taking care of the family members who happen to have four legs.</p>
+
+        <p class="mc-sec">Jackson Veterinary Clinic Today</p>
+        <p>Under Dr. Burdette’s leadership, Jackson Veterinary Clinic continues to grow while staying true to the community roots it was built on. Located at 369 East 2nd Street in Jackson, Georgia, the clinic offers comprehensive veterinary care for the pets of Butts County and the surrounding area. Dr. Burdette owns both the practice and the property — a long-term investment in the community’s future.</p>
       `
     },
     alan: {
       name: 'Dr. Alan Burdette',
       cred: 'Founder · Doctor of Veterinary Medicine',
       html: `
-        <p>Dr. Alan Burdette earned his veterinary degree from the University of Georgia in 1978. In 1981 he moved his young family to Jackson and opened the doors of what would become Jackson Veterinary Clinic — then spent the next four-plus decades as the face of veterinary medicine in this town.</p>
-        <p class="mc-quote">Retirement isn't really in Dr. Alan's vocabulary.</p>
-        <p>He passed the practice to his son in 2023, but you'll still find him here Tuesday through Thursday — in surgery on Tuesdays and Thursdays, seeing patients on Wednesdays. His steady hands in the operating room are part of what makes this clinic what it is.</p>
+        <p class="mc-sec">Where It All Started</p>
+        <p>Dr. Alan Burdette grew up in Macon, Georgia and went on to earn his veterinary degree from the University of Georgia College of Veterinary Medicine in 1978. In 1981, he made a decision that would define the next four-plus decades of his life: he moved his young family to Jackson, Georgia and purchased what would become Jackson Veterinary Clinic. That practice has been serving Butts County ever since.</p>
+
+        <p class="mc-sec">Four Decades of Service to Jackson</p>
+        <p>For more than 40 years, Dr. Alan Burdette was the face of veterinary medicine in Jackson. He built the clinic from the ground up, earned the trust of generations of families in Butts County, and established a standard of care that the community came to rely on. In November of 2023, he passed the practice to his son, Dr. Andy Burdette — keeping it in family hands and ensuring that legacy would continue.</p>
+
+        <p class="mc-sec">Still in the Clinic</p>
+        <p>Retirement isn't really in Dr. Alan's vocabulary. He continues to work at Jackson Veterinary Clinic Tuesday through Thursday each week — performing surgeries on Tuesdays and Thursdays, and seeing patients on Wednesdays. His depth of experience and steady hands in the operating room are an invaluable part of what makes this clinic exceptional. Clients who have known him for years will be glad to know he's not going anywhere.</p>
+
+        <p class="mc-sec">Family</p>
+        <p>Dr. Alan and his wife Judy still live in Jackson in the same home they've had since 1981. Judy is a pharmacist at Piedmont Henry Hospital in Stockbridge. Together they have four children — Andy, Erin, Lindsay, and Mallory — and five grandchildren. Two of the four kids followed their dad into veterinary medicine: Dr. Andy Burdette now owns and runs Jackson Veterinary Clinic and Dr. Erin Burdette practices small animal medicine in California. Not a bad professional legacy.</p>
+
+        <p class="mc-sec">Outside the Clinic</p>
+        <p>When he's not in the clinic or working through Judy's to-do list, you'll likely find Dr. Alan on the golf course or at the lake. He's earned it.</p>
       `
     },
     natalie: {
@@ -474,7 +484,23 @@
     modal.classList.add('open'); document.body.style.overflow = 'hidden';
   }
   function closeBio() { modal.classList.remove('open'); document.body.style.overflow = ''; }
-  document.querySelectorAll('.readbio').forEach(btn => btn.addEventListener('click', () => openBio(btn.dataset.bio)));
+  document.querySelectorAll('.readbio').forEach(btn => {
+    const key = btn.dataset.bio;
+    // keep the explicit button working, but don't double-fire with the card
+    btn.addEventListener('click', e => { e.stopPropagation(); openBio(key); });
+    // make the whole teaser card (photo + body) clickable
+    const card = btn.closest('.dcard, .card');
+    if (card) {
+      card.style.cursor = 'pointer';
+      card.setAttribute('role', 'button');
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('aria-label', 'Read full bio');
+      card.addEventListener('click', () => openBio(key));
+      card.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openBio(key); }
+      });
+    }
+  });
   modal.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', closeBio));
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeBio(); });
 </script>

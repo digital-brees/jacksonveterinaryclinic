@@ -210,6 +210,19 @@ All color lives in `assets/css/tokens.css`, extracted from the 1981 logo. team.h
 
 ## Session Log
 
+### 2026-06-01 — Team page polish + verbatim bios (Brees)
+- **Hero alignment fix:** hero text was being centered as an 880px column (the `.hero-inner` `max-width:880` fought the `.wrap` `margin:0 auto`, and flexbox shrank it to content width). Removed the inner max-width, added `width:100%` so `.hero-inner` fills the shared 1200px `.wrap` container — hero copy now sits flush-left, aligned with the logo. Headline keeps its own `max-width:820px` to wrap nicely.
+- **Header logo:** removed the redundant HTML wordmark text (the badge already contains "JACKSON VETERINARY CLINIC · EST. 1981"). Header is now image-only with the name moved to `aria-label`. Swapped `logo-plate.png` → **`logo-badge.png`** (transparent, no cream coaster) per Brees, and sized it **+50%** (90px, 72px scrolled). Footer logo switched to the badge too for consistency.
+- **Beige hints from the logo:** wove the logo's sand/beige into the dark theme — warm sand divider line under each card photo (`.dcard-body` / `.card-body` `border-top`), and (briefly) sand chip pills. NOTE: the chip pills were then **removed** from the doctor teaser cards at Brees' request — teaser is now portrait + name + intro + "Read full bio" only. (`.chip`/`.chips` CSS left in place but unused/dead.)
+- **Verbatim bios:** Brees wanted the modal bios to match the source docs word-for-word.
+  - **Dr. Andy** — pulled his Google Doc (`1p5jMyyqb-n10InVTYj9lsjaE937qWBr5`) and replaced the paraphrased modal copy with his exact text under his five section headers (A Hometown Story / A Life of Service / Coming Home / Why Veterinary Medicine / Jackson Veterinary Clinic Today). Restored dropped details: 95% stat, June 1997 / June 2018 dates, owns practice + property. Iraq photo kept under "A Life of Service"; caption "Overseas · Iraq, 2005" comes from the photo filename (`MAR 05 in Iraq 033.jpeg`), not the bio text — Brees approved keeping it.
+  - **Dr. Alan** — same treatment from the verbatim local copy (`assets/copy/dr-alan-bio.md`, sourced from `Meet_Dr_Alan_Burdette_Bio.pdf`): sections Where It All Started / Four Decades of Service / Still in the Clinic / Family / Outside the Clinic, with all details (Macon, UGA College of Vet Medicine, wife Judy, four kids, Dr. Erin in CA, golf/lake).
+  - Added `.mc-sec` style (copper uppercase section labels) for the new in-modal headers. Removed the old paraphrased `.mc-quote` pull-quotes.
+  - The short **card teasers** remain summaries (not verbatim) by design — Brees approved.
+- **Clickable teaser cards:** the whole doctor/Natalie card (photo + body) now opens the bio modal, not just the link. Added `role="button"`, `tabindex`, `aria-label`, Enter/Space keyboard support, pointer cursor, and a hover cue (card hover advances + brightens the "Read full bio" arrow). Explicit button still works and `stopPropagation` prevents double-fire.
+- **Hero meta row trimmed:** removed "Father & son on the door" and "Butts County born & raised"; only the "Since 1981" marker remains.
+- Verified hero alignment + logo via headless Edge screenshots.
+
 ### 2026-06-01 — Team page built (Brees)
 - Built `team.html` on the locked design system (dark navy, Caslon + Public Sans, copper CTA). Self-contained; establishes the site's sticky header + footer pattern (nav links to Home/Our Story/Services/Team/Pricing/Contact are placeholders `#` except Home/Team).
 - Structure: hero ("The family behind the front door.") → legacy band → **two-up "Our Doctors" cards (Andy + Alan)** → team grid (Natalie card + "Room to grow" ghost/careers card) → request-appointment CTA band → footer (NAP, hours, VetCove pharmacy link, "Designed by Digital Empathy").
