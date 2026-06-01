@@ -112,7 +112,8 @@
   .dcard-photo .mono { position: absolute; inset: 0; font-size: 6.5rem; }
   .dcard-body { padding: 26px 26px 28px; display: flex; flex-direction: column; flex: 1; border-top: 1px solid rgba(192,184,168,.22); }
   .dcard-body .eyebrow { margin-bottom: 10px; }
-  .dname { font-size: clamp(1.5rem, 2.2vw, 1.95rem); margin-bottom: 12px; }
+  .dname { font-size: clamp(1.5rem, 2.2vw, 1.95rem); margin-bottom: 4px; }
+  .dcred { color: var(--sand); font-size: var(--t-sm); font-weight: 500; letter-spacing: .02em; margin-bottom: 16px; }
   .dintro { color: var(--text-soft); font-size: var(--t-sm); margin-bottom: 18px; }
   .dcard .chips { margin-bottom: 22px; }
   .dcard .readbio { margin-top: auto; }
@@ -249,7 +250,7 @@
     <nav class="menu" id="menu">
       <a href="index.html">Home</a>
       <a href="#">Our Story</a>
-      <a href="#">Services</a>
+      <a href="services.html">Services</a>
       <a href="team.html" class="active">Team</a>
       <a href="#">Pricing</a>
       <a href="#">Contact</a>
@@ -290,8 +291,9 @@
     <article class="dcard">
       <div class="dcard-photo"><div class="mono">A</div><img src="assets/images/dr-andy.jpg" alt="Dr. Andy Burdette" loading="lazy" onerror="this.remove()"></div>
       <div class="dcard-body">
-        <span class="eyebrow">Owner · Doctor of Veterinary Medicine</span>
+        <span class="eyebrow">Owner</span>
         <h3 class="display dname">Dr. Andy Burdette</h3>
+        <p class="dcred">Doctor of Veterinary Medicine</p>
         <p class="dintro">Hometown son, West Point graduate, and Army combat veteran. He came home to Jackson in 2018 and bought his father's practice in 2023 — redirecting a life of service into caring for the town's pets.</p>
         <button class="readbio" data-bio="andy">Read full bio <span class="arr">→</span></button>
       </div>
@@ -301,8 +303,9 @@
     <article class="dcard">
       <div class="dcard-photo"><div class="mono">A<small>Photo coming soon</small></div><img src="assets/images/dr-alan.jpg" alt="Dr. Alan Burdette" loading="lazy" onerror="this.remove()"></div>
       <div class="dcard-body">
-        <span class="eyebrow">Founder · Doctor of Veterinary Medicine</span>
+        <span class="eyebrow">Founder</span>
         <h3 class="display dname">Dr. Alan Burdette</h3>
+        <p class="dcred">Doctor of Veterinary Medicine</p>
         <p class="dintro">Founded the clinic in 1981 and spent four-plus decades as the face of veterinary medicine in this town. Still in surgery Tuesdays and Thursdays — retirement isn't really his thing.</p>
         <button class="readbio" data-bio="alan">Read full bio <span class="arr">→</span></button>
       </div>

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Pet Dental Care in Jackson, GA | Jackson Veterinary Clinic</title>
+<meta name="description" content="Professional dog and cat dental care in Jackson, GA — dental scaling, tartar removal, extractions, and at-home care. Protect your pet's heart, liver, and kidneys at Jackson Veterinary Clinic.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--ink-900); color: var(--text); font-family: var(--font-sans); font-size: var(--t-base); line-height: 1.7; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 56px); }
+  .eyebrow { text-transform: uppercase; letter-spacing: 0.24em; font-size: var(--t-xs); font-weight: 700; color: var(--copper); }
+  .display { font-family: var(--font-display); font-weight: 700; letter-spacing: -0.005em; line-height: 1.04; }
+
+  /* Header */
+  header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; transition: background .4s ease, box-shadow .4s ease, padding .4s ease; padding: 18px 0; }
+  header.scrolled { background: rgba(4, 22, 31, 0.86); backdrop-filter: blur(12px); box-shadow: 0 1px 0 var(--line); padding: 10px 0; }
+  .nav { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+  .brand { display: flex; align-items: center; gap: 14px; }
+  .brand img { width: 90px; height: 90px; transition: width .4s, height .4s; }
+  header.scrolled .brand img { width: 72px; height: 72px; }
+  .menu { display: flex; align-items: center; gap: 30px; }
+  .menu a { font-size: var(--t-sm); color: var(--text-soft); font-weight: 500; transition: color .2s; }
+  .menu a:hover, .menu a.active { color: var(--text); }
+  .menu a.active { position: relative; }
+  .menu a.active::after { content:""; position:absolute; left:0; right:0; bottom:-7px; height:2px; background: var(--copper); }
+  .btn { display: inline-block; padding: 13px 26px; border-radius: var(--r-pill); background: var(--copper); color: var(--ink-900); font-weight: 700; font-size: var(--t-sm); transition: background .25s, transform .25s; white-space: nowrap; }
+  .btn:hover { background: var(--copper-bright); transform: translateY(-2px); }
+  .btn-ghost { background: transparent; color: var(--text); box-shadow: inset 0 0 0 1.5px var(--line-strong); }
+  .btn-ghost:hover { background: rgba(192,184,168,.08); box-shadow: inset 0 0 0 1.5px var(--copper); }
+  .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; }
+  .burger span { width: 24px; height: 2px; background: var(--text); transition: .3s; }
+
+  /* Hero */
+  .hero { position: relative; min-height: 72vh; display: flex; align-items: center; padding: 170px 0 90px; border-bottom: 1px solid var(--line); overflow: hidden; background: var(--ink-900); }
+  .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+  .hero-overlay { position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(90deg, rgba(4,22,31,.94) 0%, rgba(4,22,31,.74) 45%, rgba(6,30,43,.46) 80%, rgba(8,40,56,.30) 100%), linear-gradient(0deg, var(--ink-900) 2%, transparent 62%); }
+  .hero .wrap { position: relative; z-index: 2; }
+  .hero h1 { font-size: var(--t-3xl); max-width: 760px; margin: 14px 0 18px; }
+  .hero h1 .accent { color: var(--sand); }
+  .hero p.lede { font-size: var(--t-lg); color: var(--text-soft); max-width: 600px; margin-bottom: 30px; }
+
+  /* Section base */
+  .section { padding: clamp(56px, 8vw, 104px) 0; }
+  .sec-eyebrow { display: inline-block; margin-bottom: 14px; }
+
+  /* Split (image + text) */
+  .split { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(34px, 6vw, 76px); align-items: center; }
+  .split-text h2 { font-size: var(--t-2xl); margin-bottom: 18px; }
+  .split-text p { color: var(--text-soft); }
+  .split-text p + p { margin-top: 18px; }
+  .split-text strong { color: var(--text); font-weight: 600; }
+  .split-media { position: relative; }
+  .split-media img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: var(--r-lg); border: 1px solid var(--line); }
+  .split-media .badge { position: absolute; left: -14px; bottom: -14px; background: var(--copper); color: var(--ink-900); font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; padding: 12px 18px; border-radius: var(--r-md); box-shadow: 0 18px 40px -18px rgba(0,0,0,.7); }
+
+  /* Feature grid */
+  .feat-wrap { background: linear-gradient(180deg, var(--ink-950), var(--ink-900)); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .feat-head { max-width: 640px; margin-bottom: clamp(28px, 4vw, 48px); }
+  .feat-head h2 { font-size: var(--t-2xl); margin-bottom: 10px; }
+  .feat-head p { color: var(--text-soft); }
+  .feat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px; }
+  .feat { background: linear-gradient(180deg, var(--ink-850), var(--ink-900)); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 26px 24px; transition: transform .35s ease, border-color .35s ease; }
+  .feat:hover { transform: translateY(-5px); border-color: var(--line-strong); }
+  .feat .ic { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: rgba(200,136,88,.14); border: 1.5px solid var(--copper); margin-bottom: 16px; }
+  .feat .ic svg { width: 20px; height: 20px; stroke: var(--copper); fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+  .feat h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.25rem; margin-bottom: 8px; }
+  .feat p { color: var(--text-soft); font-size: var(--t-sm); }
+
+  /* Statement band */
+  .statement { position: relative; text-align: center; background-color: var(--ink-950); background-image: radial-gradient(75% 130% at 50% 0%, rgba(200,136,88,.20), transparent 58%); border-bottom: 1px solid var(--line); }
+  .statement .wrap { max-width: 920px; }
+  .statement .q { font-family: var(--font-display); font-weight: 700; font-size: var(--t-2xl); line-height: 1.12; letter-spacing: -.01em; }
+  .statement .q .accent { color: var(--sand); }
+  .statement p.sub { color: var(--text-soft); margin-top: 22px; max-width: 640px; margin-left: auto; margin-right: auto; }
+
+  /* Callout cards */
+  .callout-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  .callout { background: linear-gradient(180deg, var(--ink-850), var(--ink-900)); border: 1px solid var(--line); border-left: 3px solid var(--copper); border-radius: var(--r-lg); padding: 30px 28px; }
+  .callout h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.4rem; margin-bottom: 12px; }
+  .callout p { color: var(--text-soft); font-size: var(--t-sm); }
+  .callout .btn { margin-top: 18px; }
+
+  /* CTA */
+  .cta { position: relative; padding: clamp(68px, 9vw, 110px) 0; background-color: var(--ink-950); background-image: radial-gradient(70% 120% at 50% 0%, rgba(200,136,88,.18), transparent 55%); border-top: 1px solid var(--line); text-align: center; }
+  .cta h2 { font-size: var(--t-2xl); margin-bottom: 14px; }
+  .cta p { color: var(--text-soft); max-width: 540px; margin: 0 auto 30px; }
+  .cta .btn { padding: 15px 34px; font-size: var(--t-base); }
+
+  /* Footer */
+  footer { background: var(--ink-950); padding: 64px 0 36px; border-top: 1px solid var(--line); }
+  .fgrid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 40px; }
+  .fbrand { display: flex; gap: 14px; align-items: flex-start; }
+  .fbrand img { width: 64px; height: 64px; }
+  .fbrand .bname { font-family: var(--font-display); font-weight: 700; text-transform: uppercase; letter-spacing: .02em; font-size: 1.15rem; }
+  .fbrand p { color: var(--text-mute); font-size: var(--t-sm); margin-top: 8px; max-width: 260px; }
+  .fcol h4 { font-size: var(--t-xs); letter-spacing: .18em; text-transform: uppercase; color: var(--copper); margin-bottom: 16px; }
+  .fcol a, .fcol p { display: block; color: var(--text-soft); font-size: var(--t-sm); margin-bottom: 10px; }
+  .fcol a:hover { color: var(--text); }
+  .fbar { margin-top: 48px; padding-top: 22px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; font-size: var(--t-xs); color: var(--text-mute); }
+  .fbar a { color: var(--text-soft); }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+
+  @media (max-width: 880px) {
+    .split { grid-template-columns: 1fr; gap: 30px; }
+    .split-media { order: -1; }
+    .callout-grid { grid-template-columns: 1fr; }
+    .menu { position: fixed; inset: 0 0 0 auto; width: min(78vw, 320px); flex-direction: column; align-items: flex-start; justify-content: center; gap: 26px; padding: 40px; background: var(--ink-850); transform: translateX(100%); transition: transform .4s ease; box-shadow: -20px 0 60px rgba(0,0,0,.5); }
+    .menu.open { transform: none; }
+    .menu .btn { margin-top: 8px; }
+    .burger { display: flex; }
+    .fgrid { grid-template-columns: 1fr; gap: 32px; }
+    .hero { min-height: 60vh; padding: 140px 0 70px; }
+  }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } .hero-video { display: none; } .hero { background: var(--ink-900) url('assets/video/dental-hero-poster.jpg') center/cover no-repeat; } }
+</style>
+</head>
+<body>
+
+<!-- ===== Header ===== -->
+<header id="hdr">
+  <div class="wrap nav">
+    <a class="brand" href="index.html" aria-label="Jackson Veterinary Clinic — Est. 1981, Jackson GA">
+      <img src="assets/logo/logo-badge.png" alt="Jackson Veterinary Clinic">
+    </a>
+    <nav class="menu" id="menu">
+      <a href="index.html">Home</a>
+      <a href="#">Our Story</a>
+      <a href="services.html" class="active">Services</a>
+      <a href="team.html">Team</a>
+      <a href="#">Pricing</a>
+      <a href="#">Contact</a>
+      <a href="#request" class="btn">Request Appointment</a>
+    </nav>
+    <div class="burger" id="burger" aria-label="Menu" role="button" tabindex="0"><span></span><span></span><span></span></div>
+  </div>
+</header>
+
+<!-- ===== Hero ===== -->
+<section class="hero">
+  <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="assets/video/dental-hero-poster.jpg" aria-hidden="true">
+    <source src="assets/video/dental-hero.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="wrap">
+    <span class="eyebrow reveal">Dental Care · Jackson, GA</span>
+    <h1 class="display reveal">Healthy teeth, <span class="accent">a healthier pet.</span></h1>
+    <p class="lede reveal">Dental disease is one of the most common — and most overlooked — health problems in dogs and cats. We take your pet's oral health seriously.</p>
+    <a href="#request" class="btn reveal">Request an Appointment</a>
+  </div>
+</section>
+
+<!-- ===== Overview (split) ===== -->
+<section class="section wrap">
+  <div class="split">
+    <div class="split-text reveal">
+      <span class="eyebrow sec-eyebrow">Why it matters</span>
+      <h2 class="display">More than fresh breath.</h2>
+      <p>At Jackson Veterinary Clinic, we take your pet's oral health seriously. We provide <strong>dental scaling</strong>, which is a process that removes tartar buildup, preventing further complications of the mouth. The bacteria in the mouth not only cause tooth loss, but more importantly, they can enter into the bloodstream and infect the heart, liver and kidneys (and other organs as well).</p>
+      <p>Occasionally, removal of teeth is required, either in the case of an infection or compaction of adult and baby teeth. After the dental cleaning is done we help to prevent future problems by sending your pet home with his or her very own dental kit that contains samples to help keep your pet's teeth healthier longer!</p>
+    </div>
+    <div class="split-media reveal">
+      <img src="assets/images/dental-dog.jpg" alt="A happy, healthy dog — dental care at Jackson Veterinary Clinic in Jackson, GA">
+      <span class="badge">Healthy mouth,<br>happy pet</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== What we provide (feature grid) ===== -->
+<section class="feat-wrap">
+  <div class="section wrap">
+    <div class="feat-head reveal">
+      <span class="eyebrow sec-eyebrow">What we provide</span>
+      <h2 class="display">Complete dental care, under one roof.</h2>
+      <p>From routine cleanings to extractions, every step happens right here in Jackson.</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <h3>Dental Scaling</h3>
+        <p>Removes tartar buildup before it can cause tooth loss or threaten the organs.</p>
+      </div>
+      <div class="feat reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <h3>Oral Exams</h3>
+        <p>Your pet's teeth are examined by the Doctor at every annual visit.</p>
+      </div>
+      <div class="feat reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <h3>Extractions</h3>
+        <p>Careful removal of infected or compacted adult and baby teeth when needed.</p>
+      </div>
+      <div class="feat reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <h3>Take-Home Dental Kit</h3>
+        <p>Every patient goes home with samples to keep their teeth healthier, longer.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Statement band ===== -->
+<section class="section statement">
+  <div class="wrap reveal">
+    <p class="q display">The sooner you take care of the teeth <span class="accent">(at the first sign of tartar or gum redness)</span> the easier the procedure will be for the pet.</p>
+    <p class="sub">Postponing a recommended dental cleaning only allows more bacteria to be released into the blood stream and tartar builds up on tartar, forming a hard to remove coating to the teeth.</p>
+  </div>
+</section>
+
+<!-- ===== Callout cards ===== -->
+<section class="section wrap">
+  <div class="callout-grid">
+    <div class="callout reveal">
+      <h3>When to come in</h3>
+      <p>Your pet's teeth will be examined by the Doctor when you come in for their annual exam. At that time, he will advise you as he sees fit. If you have any questions, at this time or any other, please feel free to ask the Doctor or one of the technicians. Taking care of your pet's teeth now will save the both of you trouble in the long run.</p>
+    </div>
+    <div class="callout reveal">
+      <h3>Before your pet's procedure</h3>
+      <p>If you would like a printable copy of our anesthesia permission form to fill out and bring in at the time of your appointment, you can request one here. If you do not bring one in then you will be asked to fill one out at our office.</p>
+      <a href="#" class="btn btn-ghost">Anesthesia Consent Form</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta" id="request">
+  <div class="wrap">
+    <span class="eyebrow">New patient or returning friend</span>
+    <h2 class="display">Let's get your pet on the schedule.</h2>
+    <p>We don't do anonymous online booking — just send a request and a real person from our team will reach out.</p>
+    <a href="#" class="btn">Request an Appointment</a>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div class="fbrand">
+        <img src="assets/logo/logo-badge.png" alt="Jackson Veterinary Clinic">
+        <div>
+          <div class="bname">Jackson Veterinary Clinic</div>
+          <p>Family-owned veterinary care for the pets of Butts County since 1981.</p>
+        </div>
+      </div>
+      <div class="fcol">
+        <h4>Visit</h4>
+        <p>369 East 2nd Street<br>Jackson, GA 30233</p>
+        <a href="tel:7707755710">770-775-5710</a>
+        <p>Mon–Fri · 8am – 6pm</p>
+      </div>
+      <div class="fcol">
+        <h4>Explore</h4>
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="team.html">Team</a>
+        <a href="https://jacksonveterinaryclinic.ourvet.com" target="_blank" rel="noopener">Online Pharmacy</a>
+      </div>
+    </div>
+    <div class="fbar">
+      <span>© 2026 Jackson Veterinary Clinic · Jackson, Georgia</span>
+      <span>Designed by <a href="https://digitalempathyinc.com" target="_blank" rel="noopener">Digital Empathy</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const hdr = document.getElementById('hdr');
+  const onScroll = () => hdr.classList.toggle('scrolled', window.scrollY > 30);
+  onScroll(); window.addEventListener('scroll', onScroll, { passive: true });
+  const burger = document.getElementById('burger');
+  const menu = document.getElementById('menu');
+  const toggleMenu = () => menu.classList.toggle('open');
+  burger.addEventListener('click', toggleMenu);
+  burger.addEventListener('keypress', e => { if (e.key === 'Enter') toggleMenu(); });
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
+  const io = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach((el, i) => { el.style.transitionDelay = (Math.min(i % 3, 2) * 0.06) + 's'; io.observe(el); });
+</script>
+
+<!-- ===== SEO: structured data ===== -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Veterinary Dental Care",
+  "name": "Pet Dental Care",
+  "provider": { "@type": "VeterinaryCare", "name": "Jackson Veterinary Clinic", "telephone": "+1-770-775-5710", "address": { "@type": "PostalAddress", "streetAddress": "369 East 2nd Street", "addressLocality": "Jackson", "addressRegion": "GA", "postalCode": "30233", "addressCountry": "US" } },
+  "areaServed": "Butts County, Georgia",
+  "description": "Professional dog and cat dental care in Jackson, GA — dental scaling, tartar removal, extractions, and at-home dental care."
+}
+</script>
+</body>
+</html>

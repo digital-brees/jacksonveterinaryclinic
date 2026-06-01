@@ -1,6 +1,6 @@
 # Jackson Veterinary Clinic — Session Notes
 
-**Status:** Brand foundation locked + Team page built (3 members). Homepage build still awaiting Alie's copy.
+**Status:** Brand foundation locked + Team page built (3 members) + Services hub & spoke template built. Homepage build still awaiting Alie's copy.
 **Created:** 2026-05-27 | **Last worked:** 2026-06-01
 **Designer:** Brees
 **Repo:** `digital-brees/jacksonveterinaryclinic` (to be created)
@@ -209,6 +209,16 @@ All color lives in `assets/css/tokens.css`, extracted from the 1981 logo. team.h
 ---
 
 ## Session Log
+
+### 2026-06-01 — Services hub + spoke template + media (Brees)
+- **SEO strategy — hub-and-spoke (decided with Brees).** Pulled the live `/services/` page (https://www.jacksonvet.net/services/, scraped to `assets/copy/services-source.md`). KEY INSIGHT: the old site is ONE `/services/` page with 26 in-page anchor sections, so Google indexes a single URL — there is no per-service ranking to "lose." Priority is (1) keep a strong Services hub + 301 the old `/services/` → new `/services/`, and (2) add standalone spoke pages as pure upside (rank for "[service] + Jackson GA"). To avoid thin content, CONSOLIDATE the 26 topics into ~11 substantial grouped pages. Rejected: one-page-only (misses upside) and page-per-service (24 thin pages).
+- **11 spokes:** wellness-preventive-care · puppy-kitten-care · senior-care · surgery · dental-care · diagnostics-imaging · echocardiography (NEW) · laser-therapy-pain · dermatology · emergency-urgent-care · end-of-life-care. (Health Certificates DROPPED per onboarding; Echocardiography ADDED — no source copy yet, needs Andy. Grooming/"Jackson Day Spa" left off pending Andy confirm.)
+- **Built `services.html` (hub):** video hero + 4 category bands (Wellness & Prevention / Surgery & Dentistry / Diagnostics & Advanced Care / When You Need Us Most), 11 cards. Each card has a short summary PLUS a sub-services line so long-tail keywords (digital X-rays, ultrasound, spay & neuter, etc.) stay on the hub. Whole cards clickable. Echocardiography carries a "New" tag. `VeterinaryCare` + OfferCatalog JSON-LD embedded.
+- **Built `dental-care.html` (spoke template).** FIRST pass was article/blog-style (breadcrumb + narrow prose + sidebar) — Brees: "this shouldn't be a blog." REDESIGNED into a real service-landing layout: video hero + CTA → split (text + image w/ copper badge) → feature grid (4 check cards) → full-width statement band (copper glow) → two callout cards (When to come in / Before the procedure + anesthesia-form button) → CTA. THIS is the mold for the other 10 spokes.
+- **Copy fidelity:** spoke *body paragraphs* are VERBATIM from jacksonvet.net (tightened the dental ones back to exact wording after minor drift). Page *scaffolding* (hero headlines, section subheads, CTAs) is ours — the live site has no per-service headlines. Hub card summaries are intentionally paraphrased (SEO: avoids duplicate content vs. the spoke).
+- **Media — Pexels placeholders, "video on every page" (Brees' choices).** Followed media rules (no vet/tech faces, no gloves except surgery). Downloaded + ffmpeg-compressed: `assets/video/services-hero.mp4` (690KB, three dogs + a cat on a sofa — echoes the logo dog+cat), `assets/video/dental-hero.mp4` (263KB, dog close-up/mouth) + posters; `assets/images/dental-dog.jpg` (smiling dog, optimized 1600px). ffmpeg available at WinGet path. All PLACEHOLDER — swap for real Jackson footage when Candid Practice Photos folder is populated.
+- **Local preview:** `py -3 -m http.server 8780` from project root (the server exits between sessions — restart as needed). Headless screenshots via Edge: `msedge --headless=new --screenshot=<abs path> <url>`.
+- **TODO next:** (1) extract shared CSS (`assets/css/site.css`) before batching — header/footer/base currently duplicated across team/services/dental; (2) source Pexels video+image per spoke and BUILD the remaining 10 on the dental template; (3) get echocardiography copy + grooming decision from Andy; (4) wire anesthesia consent + appointment request via JotForm; (5) plan 301 redirects for the jacksonvet.net → jacksonveterinaryclinic.net migration (domain dispute still open).
 
 ### 2026-06-01 — Team page polish + verbatim bios (Brees)
 - **Hero alignment fix:** hero text was being centered as an 880px column (the `.hero-inner` `max-width:880` fought the `.wrap` `margin:0 auto`, and flexbox shrank it to content width). Removed the inner max-width, added `width:100%` so `.hero-inner` fills the shared 1200px `.wrap` container — hero copy now sits flush-left, aligned with the logo. Headline keeps its own `max-width:820px` to wrap nicely.
