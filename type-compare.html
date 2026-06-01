@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jackson — Headline Font Compare</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Barlow:wght@700;800&family=Barlow+Semi+Condensed:wght@700;800&family=Anton&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--ink-900);color:var(--text);font-family:'Public Sans',sans-serif;padding:48px clamp(20px,5vw,64px)}
+  .ref{display:flex;align-items:center;gap:28px;background:var(--ink-850);border:1px solid var(--line);border-radius:14px;padding:22px 26px;margin-bottom:40px;flex-wrap:wrap}
+  .ref img{height:120px}
+  .ref p{color:var(--text-soft);font-size:14px;max-width:460px}
+  .ref b{color:var(--copper)}
+  .opt{border-top:1px solid var(--line);padding:38px 0}
+  .tag{display:flex;align-items:baseline;gap:14px;margin-bottom:18px}
+  .tag .n{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--copper);font-weight:700}
+  .tag .f{font-size:13px;color:var(--text-mute)}
+  .eyebrow{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--copper);font-weight:700;margin-bottom:14px}
+  h1{line-height:1.02;letter-spacing:-0.005em;margin-bottom:14px;color:var(--text)}
+  .wm{font-size:13px;letter-spacing:.14em;color:var(--text-soft);text-transform:uppercase}
+  .est{color:var(--sand)}
+
+  /* Option A — Archivo */
+  .a h1{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(2.6rem,6vw,5rem);text-transform:none}
+  .a .wm,.a .caps{font-family:'Archivo',sans-serif;font-weight:800}
+  /* Option B — Barlow Semi Condensed */
+  .b h1{font-family:'Barlow Semi Condensed',sans-serif;font-weight:800;font-size:clamp(2.6rem,6.2vw,5.2rem);text-transform:uppercase;letter-spacing:0}
+  .b .wm,.b .caps{font-family:'Barlow Semi Condensed',sans-serif;font-weight:800}
+  /* Option C — Anton */
+  .c h1{font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(2.6rem,6.4vw,5.4rem);text-transform:uppercase;letter-spacing:.005em}
+  .c .wm,.c .caps{font-family:'Anton',sans-serif;font-weight:400}
+
+  .caps{text-transform:uppercase;letter-spacing:.06em}
+  .row{display:flex;gap:40px;flex-wrap:wrap;align-items:baseline;margin-top:8px}
+  .row .est{font-size:30px;letter-spacing:.04em}
+</style>
+</head>
+<body>
+  <div class="ref">
+    <img src="assets/logo/logo-plate.png" alt="logo">
+    <p>The logo wordmark is a <b>bold, uppercase geometric grotesque</b>. Below, the hero headline rendered in three close Google-Font matches. Compare each against the lettering in the mark. Pick one and I'll lock it in.</p>
+  </div>
+
+  <div class="opt a">
+    <div class="tag"><span class="n">Option A</span><span class="f">Archivo (800) — clean sturdy grotesque, closest all-round match</span></div>
+    <div class="eyebrow">Our Team · Jackson, Georgia</div>
+    <h1>The family behind the front door.</h1>
+    <div class="row"><span class="caps wm">Jackson Veterinary Clinic</span><span class="est caps">Est. 1981</span></div>
+  </div>
+
+  <div class="opt b">
+    <div class="tag"><span class="n">Option B</span><span class="f">Barlow Semi Condensed (800) — warmer, slightly condensed, utilitarian Americana</span></div>
+    <div class="eyebrow">Our Team · Jackson, Georgia</div>
+    <h1>The family behind the front door.</h1>
+    <div class="row"><span class="caps wm">Jackson Veterinary Clinic</span><span class="est caps">Est. 1981</span></div>
+  </div>
+
+  <div class="opt c">
+    <div class="tag"><span class="n">Option C</span><span class="f">Anton — heaviest / most poster-like, closest to the logo's weight</span></div>
+    <div class="eyebrow">Our Team · Jackson, Georgia</div>
+    <h1>The family behind the front door.</h1>
+    <div class="row"><span class="caps wm">Jackson Veterinary Clinic</span><span class="est caps">Est. 1981</span></div>
+  </div>
+</body>
+</html>

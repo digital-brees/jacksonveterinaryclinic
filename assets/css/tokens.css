@@ -1,0 +1,61 @@
+/* ============================================================
+   Jackson Veterinary Clinic — Design Tokens
+   Palette extracted directly from the 1981 logo (JVC_Primary).
+   Dark theme. Warm neutrals keep it human, never corporate.
+   ============================================================ */
+
+:root {
+  /* --- Brand core (straight from the logo) --- */
+  --ink-900: #082838;   /* logo disc navy — page base */
+  --sand:    #C0B8A8;   /* logo inner circle — warm neutral */
+  --sand-lt: #E0C0A0;   /* logo highlight tan */
+  --copper:  #C88858;   /* shepherd's coat — primary accent / CTA */
+  --paper:   #F8F8F8;   /* logo lettering / cat — near-white */
+
+  /* --- Dark surface ramp (navy-tinted) --- */
+  --ink-950: #04161F;   /* deepest — behind base, footer */
+  --ink-850: #0A2E40;   /* raised panels */
+  --ink-800: #0D3548;   /* cards */
+  --ink-700: #123F54;   /* card hover / borders-strong */
+  --ink-600: #1A4E63;   /* dividers, hairlines on dark */
+
+  /* --- Accent tints --- */
+  --copper-bright: #D89B6B; /* hover / active accent */
+  --copper-deep:   #A86A3E; /* pressed / on-light accent */
+
+  /* --- Text on dark --- */
+  --text:      #F2EEE6;  /* warm off-white — primary copy */
+  --text-soft: #C0B8A8;  /* sand — secondary copy */
+  --text-mute: #8595A0;  /* blue-gray — captions, meta */
+
+  /* --- Hairlines & glows --- */
+  --line:       rgba(192, 184, 168, 0.16); /* sand @ low alpha */
+  --line-strong:rgba(192, 184, 168, 0.30);
+  --glow-copper:rgba(200, 136, 88, 0.22);
+
+  /* --- Radius --- */
+  --r-sm: 4px;
+  --r-md: 10px;
+  --r-lg: 18px;
+  --r-pill: 999px;
+
+  /* --- Spacing scale (8pt) --- */
+  --s-1: 8px;  --s-2: 16px; --s-3: 24px; --s-4: 32px;
+  --s-5: 48px; --s-6: 64px; --s-7: 96px; --s-8: 128px;
+
+  /* --- Type scale (fluid) --- */
+  --t-xs:  clamp(0.75rem, 0.72rem + 0.15vw, 0.8125rem);
+  --t-sm:  clamp(0.875rem, 0.85rem + 0.15vw, 0.9375rem);
+  --t-base:clamp(1rem, 0.96rem + 0.2vw, 1.0625rem);
+  --t-lg:  clamp(1.2rem, 1.12rem + 0.4vw, 1.375rem);
+  --t-xl:  clamp(1.5rem, 1.35rem + 0.75vw, 2rem);
+  --t-2xl: clamp(2rem, 1.7rem + 1.5vw, 3rem);
+  --t-3xl: clamp(2.75rem, 2.2rem + 2.75vw, 4.5rem);
+  --t-4xl: clamp(3.5rem, 2.6rem + 4.5vw, 6.5rem);
+
+  /* --- Typography families --- */
+  /* Display matches the logo wordmark: bold condensed geometric grotesque. */
+  --font-display: 'Barlow Semi Condensed', system-ui, sans-serif;
+  --font-accent:  'Barlow Semi Condensed', system-ui, sans-serif; /* pull-quotes, monograms */
+  --font-sans:    'Public Sans', system-ui, sans-serif;
+}

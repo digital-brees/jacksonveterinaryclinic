@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Our Team — Jackson Veterinary Clinic</title>
+<meta name="description" content="Meet the team at Jackson Veterinary Clinic in Jackson, Georgia. Three generations of hometown care since 1981.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--ink-900);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-size: var(--t-base);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 56px); }
+  .eyebrow {
+    text-transform: uppercase; letter-spacing: 0.24em;
+    font-size: var(--t-xs); font-weight: 700; color: var(--copper);
+  }
+  .display { font-family: var(--font-display); font-weight: 700; letter-spacing: -0.005em; line-height: 1.02; }
+
+  /* ---------- Header ---------- */
+  header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    transition: background .4s ease, box-shadow .4s ease, padding .4s ease;
+    padding: 18px 0;
+  }
+  header.scrolled {
+    background: rgba(4, 22, 31, 0.86);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 1px 0 var(--line);
+    padding: 10px 0;
+  }
+  .nav { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+  .brand { display: flex; align-items: center; gap: 14px; }
+  .brand img { width: 52px; height: 52px; transition: width .4s, height .4s; }
+  header.scrolled .brand img { width: 42px; height: 42px; }
+  .brand .bname { font-family: var(--font-display); font-weight: 700; text-transform: uppercase; letter-spacing: .02em; font-size: 1.04rem; line-height: 1.05; }
+  .brand .bsub { font-family: var(--font-sans); font-size: 10px; letter-spacing: .22em; text-transform: uppercase; color: var(--text-soft); }
+  .menu { display: flex; align-items: center; gap: 30px; }
+  .menu a { font-size: var(--t-sm); color: var(--text-soft); font-weight: 500; letter-spacing: .01em; transition: color .2s; }
+  .menu a:hover, .menu a.active { color: var(--text); }
+  .menu a.active { position: relative; }
+  .menu a.active::after { content:""; position:absolute; left:0; right:0; bottom:-7px; height:2px; background: var(--copper); }
+  .btn {
+    display: inline-block; padding: 12px 24px; border-radius: var(--r-pill);
+    background: var(--copper); color: var(--ink-900); font-weight: 700; font-size: var(--t-sm);
+    transition: background .25s, transform .25s; white-space: nowrap;
+  }
+  .btn:hover { background: var(--copper-bright); transform: translateY(-2px); }
+  .btn-ghost { background: transparent; color: var(--text); box-shadow: inset 0 0 0 1.5px var(--line-strong); }
+  .btn-ghost:hover { background: rgba(192,184,168,.08); box-shadow: inset 0 0 0 1.5px var(--copper); }
+  .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; }
+  .burger span { width: 24px; height: 2px; background: var(--text); transition: .3s; }
+
+  /* ---------- Hero (video) ---------- */
+  .hero {
+    position: relative; min-height: 90vh; display: flex; align-items: center;
+    padding: 170px 0 110px; overflow: hidden; background: var(--ink-900);
+  }
+  .hero-video {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; z-index: 0;
+  }
+  .hero-overlay {
+    position: absolute; inset: 0; z-index: 1; pointer-events: none;
+    background:
+      linear-gradient(90deg, rgba(4,22,31,.94) 0%, rgba(4,22,31,.74) 40%, rgba(6,30,43,.40) 78%, rgba(8,40,56,.28) 100%),
+      linear-gradient(0deg, var(--ink-900) 2%, rgba(8,40,56,.18) 38%, transparent 62%);
+  }
+  .hero-inner { position: relative; z-index: 2; max-width: 880px; }
+  .hero h1 { font-size: var(--t-4xl); margin: 20px 0 26px; }
+  .hero h1 .accent { color: var(--sand); }
+  .hero p.lede { font-size: var(--t-lg); color: var(--text-soft); max-width: 620px; }
+  .hero .meta-row { display: flex; flex-wrap: wrap; gap: 10px 28px; margin-top: 36px; font-size: var(--t-sm); color: var(--text-mute); }
+  .hero .meta-row span { display: inline-flex; align-items: center; gap: 9px; }
+  .hero .meta-row b { color: var(--sand); font-weight: 600; }
+  .dotc { width: 6px; height: 6px; border-radius: 50%; background: var(--copper); }
+
+  /* ---------- Doctor features ---------- */
+  .docs { padding: clamp(70px, 9vw, 120px) 0 40px; }
+  .legacy-band {
+    text-align: center; max-width: 720px; margin: 0 auto clamp(50px,7vw,84px);
+  }
+  .legacy-band h2 { font-size: var(--t-2xl); margin: 16px 0 14px; }
+  .legacy-band p { color: var(--text-soft); }
+  .doctors {
+    max-width: 940px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 28px;
+  }
+  .dcard {
+    display: flex; flex-direction: column; overflow: hidden;
+    background: linear-gradient(180deg, var(--ink-850), var(--ink-900));
+    border: 1px solid var(--line); border-radius: var(--r-lg);
+    transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease;
+  }
+  .dcard:hover { transform: translateY(-5px); border-color: var(--line-strong); box-shadow: 0 30px 60px -30px rgba(0,0,0,.7); }
+  .dcard-photo { position: relative; aspect-ratio: 4/5; overflow: hidden; background: var(--ink-800); }
+  .dcard-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; z-index: 1; }
+  .dcard-photo .mono { position: absolute; inset: 0; font-size: 6.5rem; }
+  .dcard-body { padding: 26px 26px 28px; display: flex; flex-direction: column; flex: 1; }
+  .dcard-body .eyebrow { margin-bottom: 10px; }
+  .dname { font-size: clamp(1.5rem, 2.2vw, 1.95rem); margin-bottom: 12px; }
+  .dintro { color: var(--text-soft); font-size: var(--t-sm); margin-bottom: 18px; }
+  .dcard .chips { margin-bottom: 22px; }
+  .dcard .readbio { margin-top: auto; }
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+  .chip {
+    font-size: var(--t-xs); letter-spacing: .04em; color: var(--text-soft);
+    padding: 7px 14px; border-radius: var(--r-pill); background: var(--ink-800);
+    border: 1px solid var(--line);
+  }
+
+  /* ---------- Team grid ---------- */
+  .team { padding: clamp(50px, 8vw, 100px) 0 clamp(70px, 9vw, 120px); }
+  .team-head { text-align: center; max-width: 640px; margin: 0 auto clamp(40px,6vw,64px); }
+  .team-head h2 { font-size: var(--t-2xl); margin: 14px 0 12px; }
+  .team-head p { color: var(--text-soft); }
+  .grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 360px));
+    gap: 28px; justify-content: center;
+  }
+  .card {
+    background: linear-gradient(180deg, var(--ink-850), var(--ink-900));
+    border: 1px solid var(--line); border-radius: var(--r-lg); overflow: hidden;
+    transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease;
+  }
+  .card:hover { transform: translateY(-6px); border-color: var(--line-strong); box-shadow: 0 30px 60px -30px rgba(0,0,0,.7); }
+  .card-photo { aspect-ratio: 1/1; position: relative; overflow: hidden; }
+  .card-photo img { width: 100%; height: 100%; object-fit: cover; }
+  /* monogram placeholder */
+  .mono {
+    width: 100%; height: 100%; display: grid; place-items: center;
+    background: radial-gradient(circle at 50% 38%, #d8cfbd, var(--sand));
+    color: var(--ink-900); font-family: var(--font-display); font-weight: 800; font-size: 5.5rem;
+  }
+  .mono small { position: absolute; bottom: 14px; font-family: var(--font-sans); font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: rgba(8,40,56,.55); }
+  .card-body { padding: 24px 24px 28px; }
+  .card-body .name { font-family: var(--font-display); font-weight: 700; font-size: 1.6rem; }
+  .card-body .cred { color: var(--copper); font-size: var(--t-xs); letter-spacing: .12em; text-transform: uppercase; font-weight: 600; margin: 6px 0 14px; }
+  .card-body p { color: var(--text-soft); font-size: var(--t-sm); margin-bottom: 18px; }
+  .readbio { font-size: var(--t-sm); font-weight: 600; color: var(--text); display: inline-flex; align-items: center; gap: 8px; cursor: pointer; background: none; border: none; font-family: inherit; }
+  .readbio .arr { color: var(--copper); transition: transform .25s; }
+  .readbio:hover .arr { transform: translateX(4px); }
+  /* ghost / join card */
+  .card.ghost {
+    background: transparent; border-style: dashed; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; text-align: center; padding: 48px 28px; min-height: 320px;
+  }
+  .card.ghost .gi { font-family: var(--font-display); font-size: 2.4rem; color: var(--sand); margin-bottom: 10px; }
+  .card.ghost p { color: var(--text-soft); font-size: var(--t-sm); margin: 6px 0 20px; }
+
+  /* ---------- CTA band ---------- */
+  .cta {
+    position: relative; padding: clamp(72px, 10vw, 124px) 0;
+    background-color: var(--ink-950);
+    background-image:
+      radial-gradient(70% 120% at 50% 0%, rgba(200,136,88,.20), transparent 55%),
+      linear-gradient(180deg, rgba(4,22,31,.82) 0%, rgba(4,22,31,.72) 50%, rgba(6,30,43,.90) 100%),
+      url('assets/images/cta-bg.jpg');
+    background-size: cover, cover, cover;
+    background-position: center, center, center 32%;
+    background-repeat: no-repeat;
+    border-top: 1px solid var(--line); text-align: center;
+  }
+  .cta .wrap { position: relative; z-index: 1; }
+  .cta h2 { font-size: var(--t-2xl); margin-bottom: 14px; }
+  .cta p { color: var(--text-soft); max-width: 540px; margin: 0 auto 30px; }
+  .cta .btn { padding: 15px 34px; font-size: var(--t-base); }
+
+  /* ---------- Footer ---------- */
+  footer { background: var(--ink-950); padding: 64px 0 36px; border-top: 1px solid var(--line); }
+  .fgrid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 40px; }
+  .fbrand { display: flex; gap: 14px; align-items: flex-start; }
+  .fbrand img { width: 64px; height: 64px; }
+  .fbrand .bname { font-family: var(--font-display); font-weight: 700; text-transform: uppercase; letter-spacing: .02em; font-size: 1.15rem; }
+  .fbrand p { color: var(--text-mute); font-size: var(--t-sm); margin-top: 8px; max-width: 260px; }
+  .fcol h4 { font-size: var(--t-xs); letter-spacing: .18em; text-transform: uppercase; color: var(--copper); margin-bottom: 16px; }
+  .fcol a, .fcol p { display: block; color: var(--text-soft); font-size: var(--t-sm); margin-bottom: 10px; }
+  .fcol a:hover { color: var(--text); }
+  .fbar { margin-top: 48px; padding-top: 22px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; font-size: var(--t-xs); color: var(--text-mute); }
+  .fbar a { color: var(--text-soft); }
+
+  /* ---------- Bio modal ---------- */
+  .modal { position: fixed; inset: 0; z-index: 200; display: none; align-items: center; justify-content: center; padding: 24px; }
+  .modal.open { display: flex; }
+  .modal-bd { position: absolute; inset: 0; background: rgba(2,12,18,.78); backdrop-filter: blur(4px); }
+  .modal-card {
+    position: relative; max-width: 640px; width: 100%; max-height: 88vh; overflow-y: auto;
+    background: var(--ink-850); border: 1px solid var(--line-strong); border-radius: var(--r-lg);
+    padding: clamp(28px, 4vw, 44px); animation: pop .35s ease;
+  }
+  @keyframes pop { from { opacity: 0; transform: translateY(16px) scale(.98); } to { opacity:1; transform: none; } }
+  .modal-card .mc-cred { color: var(--copper); font-size: var(--t-xs); letter-spacing: .14em; text-transform: uppercase; font-weight: 600; }
+  .modal-card h3 { font-family: var(--font-display); font-weight: 700; font-size: var(--t-xl); margin: 8px 0 18px; }
+  .modal-card p { color: var(--text-soft); margin-bottom: 14px; font-size: var(--t-sm); }
+  .modal-card .mc-quote { font-family: var(--font-accent); font-weight: 600; color: var(--sand); font-size: var(--t-lg); line-height: 1.25; border-left: 3px solid var(--copper); padding-left: 18px; margin: 18px 0; }
+  .modal-card .mc-fig { margin: 6px 0 18px; }
+  .modal-card .mc-fig img { width: 100%; border-radius: var(--r-md); border: 1px solid var(--line); }
+  .modal-card .mc-fig figcaption { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--text-mute); margin-top: 8px; text-align: center; }
+  .mclose { position: absolute; top: 16px; right: 18px; background: none; border: none; color: var(--text-soft); font-size: 26px; cursor: pointer; line-height: 1; }
+  .mclose:hover { color: var(--text); }
+
+  /* ---------- Reveal animation ---------- */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s ease, transform .8s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 860px) {
+    .menu { position: fixed; inset: 0 0 0 auto; width: min(78vw, 320px); flex-direction: column; align-items: flex-start;
+      justify-content: center; gap: 26px; padding: 40px; background: var(--ink-850); transform: translateX(100%); transition: transform .4s ease; box-shadow: -20px 0 60px rgba(0,0,0,.5); }
+    .menu.open { transform: none; }
+    .menu .btn { margin-top: 8px; }
+    .burger { display: flex; }
+    .doctors { grid-template-columns: 1fr; max-width: 460px; }
+    .fgrid { grid-template-columns: 1fr; gap: 32px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    html { scroll-behavior: auto; }
+    .hero-video { display: none; }
+    .hero { background: var(--ink-900) url('assets/video/hero-poster.jpg') center/cover no-repeat; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== Header ===== -->
+<header id="hdr">
+  <div class="wrap nav">
+    <a class="brand" href="index.html">
+      <img src="assets/logo/logo-plate.png" alt="Jackson Veterinary Clinic">
+      <span>
+        <span class="bname">Jackson Veterinary Clinic</span><br>
+        <span class="bsub">Est. 1981 · Jackson, GA</span>
+      </span>
+    </a>
+    <nav class="menu" id="menu">
+      <a href="index.html">Home</a>
+      <a href="#">Our Story</a>
+      <a href="#">Services</a>
+      <a href="team.html" class="active">Team</a>
+      <a href="#">Pricing</a>
+      <a href="#">Contact</a>
+      <a href="#request" class="btn">Request Appointment</a>
+    </nav>
+    <div class="burger" id="burger" aria-label="Menu" role="button" tabindex="0"><span></span><span></span><span></span></div>
+  </div>
+</header>
+
+<!-- ===== Hero ===== -->
+<section class="hero">
+  <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="assets/video/hero-poster.jpg" aria-hidden="true">
+    <source src="assets/video/hero.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="wrap hero-inner">
+    <span class="eyebrow reveal">Our Team · Jackson, Georgia</span>
+    <h1 class="display reveal">The family behind <span class="accent">the front door.</span></h1>
+    <p class="lede reveal">Three generations of care in one small Georgia town. The faces here grew up down the road — a few were your classmates, one or two might have been your teachers.</p>
+    <div class="meta-row reveal">
+      <span><i class="dotc"></i> <b>Since 1981</b></span>
+      <span><i class="dotc"></i> <b>Father &amp; son</b> on the door</span>
+      <span><i class="dotc"></i> Butts County born &amp; raised</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Doctor Features ===== -->
+<section class="docs wrap">
+
+  <div class="legacy-band reveal">
+    <span class="eyebrow">Two generations, one clinic</span>
+    <h2 class="display">The name on the door hasn't changed in forty years.</h2>
+    <p>Dr. Alan Burdette opened these doors in 1981. His son Andy grew up two miles away, served his country, and came home to carry it forward. They work the same floor today.</p>
+  </div>
+
+  <div class="doctors reveal">
+
+    <!-- Andy -->
+    <article class="dcard">
+      <div class="dcard-photo"><div class="mono">A</div><img src="assets/images/dr-andy.jpg" alt="Dr. Andy Burdette" loading="lazy" onerror="this.remove()"></div>
+      <div class="dcard-body">
+        <span class="eyebrow">Owner · Doctor of Veterinary Medicine</span>
+        <h3 class="display dname">Dr. Andy Burdette</h3>
+        <p class="dintro">Hometown son, West Point graduate, and Army combat veteran. He came home to Jackson in 2018 and bought his father's practice in 2023 — redirecting a life of service into caring for the town's pets.</p>
+        <div class="chips">
+          <span class="chip">West Point</span>
+          <span class="chip">U.S. Army Officer</span>
+          <span class="chip">Jackson, born &amp; raised</span>
+        </div>
+        <button class="readbio" data-bio="andy">Read full bio <span class="arr">→</span></button>
+      </div>
+    </article>
+
+    <!-- Alan -->
+    <article class="dcard">
+      <div class="dcard-photo"><div class="mono">A<small>Photo coming soon</small></div><img src="assets/images/dr-alan.jpg" alt="Dr. Alan Burdette" loading="lazy" onerror="this.remove()"></div>
+      <div class="dcard-body">
+        <span class="eyebrow">Founder · Doctor of Veterinary Medicine</span>
+        <h3 class="display dname">Dr. Alan Burdette</h3>
+        <p class="dintro">Founded the clinic in 1981 and spent four-plus decades as the face of veterinary medicine in this town. Still in surgery Tuesdays and Thursdays — retirement isn't really his thing.</p>
+        <div class="chips">
+          <span class="chip">Founder · 1981</span>
+          <span class="chip">In-clinic Tue–Thu</span>
+          <span class="chip">UGA, 1978</span>
+        </div>
+        <button class="readbio" data-bio="alan">Read full bio <span class="arr">→</span></button>
+      </div>
+    </article>
+
+  </div>
+
+</section>
+
+<!-- ===== Team Grid ===== -->
+<section class="team">
+  <div class="wrap">
+    <div class="team-head reveal">
+      <span class="eyebrow">The team that makes it run</span>
+      <h2 class="display">Familiar faces, every visit.</h2>
+      <p>Small practice, steady hands. The people who'll know your pet's name — and yours.</p>
+    </div>
+    <div class="grid">
+
+      <!-- Natalie -->
+      <div class="card reveal">
+        <div class="card-photo">
+          <div class="mono">N<small>Photo coming soon</small></div>
+        </div>
+        <div class="card-body">
+          <div class="name">Natalie</div>
+          <div class="cred">Licensed Veterinary Technician</div>
+          <p>A calm, compassionate hand — with a special interest in patient care and anesthesia monitoring, and a love for helping families understand everyday wellness.</p>
+          <button class="readbio" data-bio="natalie">Read full bio <span class="arr">→</span></button>
+        </div>
+      </div>
+
+      <!-- Join card -->
+      <div class="card ghost reveal">
+        <div class="gi">＋</div>
+        <div class="display" style="font-size:1.4rem;">Room to grow</div>
+        <p>We're always glad to meet good people who love animals as much as this town does.</p>
+        <a href="#" class="btn btn-ghost">Join Our Team</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta" id="request">
+  <div class="wrap">
+    <span class="eyebrow">New patient or returning friend</span>
+    <h2 class="display">Let's get your pet on the schedule.</h2>
+    <p>We don't do anonymous online booking — just send a request and a real person from our team will reach out to find a time that works.</p>
+    <a href="#" class="btn">Request an Appointment</a>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div class="fbrand">
+        <img src="assets/logo/logo-plate.png" alt="Jackson Veterinary Clinic">
+        <div>
+          <div class="bname">Jackson Veterinary Clinic</div>
+          <p>Family-owned veterinary care for the pets of Butts County since 1981.</p>
+        </div>
+      </div>
+      <div class="fcol">
+        <h4>Visit</h4>
+        <p>369 East 2nd Street<br>Jackson, GA 30233</p>
+        <a href="tel:7707755710">770-775-5710</a>
+        <p>Mon–Fri · 8am – 6pm</p>
+      </div>
+      <div class="fcol">
+        <h4>Explore</h4>
+        <a href="index.html">Home</a>
+        <a href="#">Our Story</a>
+        <a href="team.html">Team</a>
+        <a href="https://jacksonveterinaryclinic.ourvet.com" target="_blank" rel="noopener">Online Pharmacy</a>
+      </div>
+    </div>
+    <div class="fbar">
+      <span>© 2026 Jackson Veterinary Clinic · Jackson, Georgia</span>
+      <span>Designed by <a href="https://digitalempathyinc.com" target="_blank" rel="noopener">Digital Empathy</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== Bio Modal ===== -->
+<div class="modal" id="modal">
+  <div class="modal-bd" data-close></div>
+  <div class="modal-card" id="modalCard" role="dialog" aria-modal="true">
+    <button class="mclose" data-close aria-label="Close">×</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<script>
+  // Header scroll state
+  const hdr = document.getElementById('hdr');
+  const onScroll = () => hdr.classList.toggle('scrolled', window.scrollY > 30);
+  onScroll(); window.addEventListener('scroll', onScroll, { passive: true });
+
+  // Mobile menu
+  const burger = document.getElementById('burger');
+  const menu = document.getElementById('menu');
+  const toggleMenu = () => menu.classList.toggle('open');
+  burger.addEventListener('click', toggleMenu);
+  burger.addEventListener('keypress', e => { if (e.key === 'Enter') toggleMenu(); });
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
+
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach((el, i) => {
+    el.style.transitionDelay = (Math.min(i % 4, 3) * 0.07) + 's';
+    io.observe(el);
+  });
+
+  // Bios
+  const BIOS = {
+    andy: {
+      name: 'Dr. Andy Burdette',
+      cred: 'Owner · Doctor of Veterinary Medicine',
+      html: `
+        <p>Andy started school in Jackson the same year his father opened the clinic, and stayed through twelfth grade. In 1997 he left for the United States Military Academy at West Point, served as an Army officer, and deployed overseas in combat — carrying West Point's charge of character and service long after he hung up the uniform.</p>
+        <figure class="mc-fig"><img src="assets/images/dr-andy-iraq.jpg" alt="Andy Burdette serving overseas in Iraq, 2005"><figcaption>Overseas · Iraq, 2005</figcaption></figure>
+        <p class="mc-quote">He didn't leave service behind when he left the Army. He redirected it.</p>
+        <p>After more than twenty years away, he came home. In November 2023 he bought the practice from his father — the same clinic that's cared for Butts County for four decades. Looking after the pets of Jackson, for Andy, is the same calling pointed in a new direction: taking care of the family members who happen to have four legs.</p>
+      `
+    },
+    alan: {
+      name: 'Dr. Alan Burdette',
+      cred: 'Founder · Doctor of Veterinary Medicine',
+      html: `
+        <p>Dr. Alan Burdette earned his veterinary degree from the University of Georgia in 1978. In 1981 he moved his young family to Jackson and opened the doors of what would become Jackson Veterinary Clinic — then spent the next four-plus decades as the face of veterinary medicine in this town.</p>
+        <p class="mc-quote">Retirement isn't really in Dr. Alan's vocabulary.</p>
+        <p>He passed the practice to his son in 2023, but you'll still find him here Tuesday through Thursday — in surgery on Tuesdays and Thursdays, seeing patients on Wednesdays. His steady hands in the operating room are part of what makes this clinic what it is.</p>
+      `
+    },
+    natalie: {
+      name: 'Natalie',
+      cred: 'Licensed Veterinary Technician',
+      html: `
+        <p>Originally from Cedar Falls, Natalie discovered her passion for animal care while helping care for animals on her grandparents' property in eastern Iowa.</p>
+        <p class="mc-quote">"Some of my favorite childhood memories are of caring for animals and learning how much trust and compassion go into their care. Those experiences inspired the way I approach both pets and the people who love them."</p>
+        <p>"Working in veterinary medicine has always felt incredibly rewarding to me. I love helping pets feel safe and comfortable while supporting their families through every stage of care." Natalie has a special interest in patient care and anesthesia monitoring, and enjoys educating pet owners about everyday wellness and preventive care. She brings a calm, compassionate approach to her role at Jackson Veterinary Clinic and is passionate about making every visit a positive experience for both pets and owners.</p>
+        <p>Outside of the clinic, Natalie enjoys hiking, baking, and spending time with her family. She lives with her husband, their two children, and five dogs.</p>
+      `
+    }
+  };
+  const modal = document.getElementById('modal');
+  const modalContent = document.getElementById('modalContent');
+  function openBio(key) {
+    const b = BIOS[key]; if (!b) return;
+    modalContent.innerHTML = `<div class="mc-cred">${b.cred}</div><h3>${b.name}</h3>${b.html}`;
+    modal.classList.add('open'); document.body.style.overflow = 'hidden';
+  }
+  function closeBio() { modal.classList.remove('open'); document.body.style.overflow = ''; }
+  document.querySelectorAll('.readbio').forEach(btn => btn.addEventListener('click', () => openBio(btn.dataset.bio)));
+  modal.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', closeBio));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeBio(); });
+</script>
+</body>
+</html>
