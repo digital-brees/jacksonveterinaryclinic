@@ -1,7 +1,7 @@
 # Jackson Veterinary Clinic — Session Notes
 
-**Status:** Brand foundation locked + Team page built (3 members) + Services hub & spoke template built. Homepage build still awaiting Alie's copy.
-**Created:** 2026-05-27 | **Last worked:** 2026-06-01
+**Status:** Brand foundation locked + Team page built + Services hub (image-led cards) + Dental spoke fully redesigned (tight palette, beige band, distinct icons, depth pass, 2026 motion layer, warm hero). Palette corrected to the TRUE logo navy `#0F283D` + copper `#C88C5F`. Homepage build still awaiting Alie's copy.
+**Created:** 2026-05-27 | **Last worked:** 2026-06-02
 **Designer:** Brees
 **Repo:** `digital-brees/jacksonveterinaryclinic` (to be created)
 **Local path:** `C:\Users\brees\Claude Projects\Jackson Veterinary Clinic`
@@ -49,13 +49,13 @@ The tone should be warm, personal, community-oriented. **Never corporate.**
 - **Keep the navy logo** — Established 1981, there's real heritage in it. Don't redesign.
 - **Functional, non-generic** — emphasis on substance over decoration.
 
-**Color palette:** LOCKED — extracted directly from the 1981 logo. Tokens in `assets/css/tokens.css`.
-- Ink Navy `#082838` (logo disc) — page base / anchor
+**Color palette:** LOCKED — extracted directly from the 1981 logo. Tokens in `assets/css/tokens.css`. (Navy + ramp + copper CORRECTED 2026-06-02 — sampled the logo art; old `#082838`/`#C88858` were slightly off.)
+- Ink Navy `#0F283D` (logo disc, sampled) — page base / anchor
 - Sand `#C0B8A8` (logo inner circle) — warm neutral / secondary text
-- Saddle Copper `#C88858` (shepherd's coat) — primary accent / CTA
+- Saddle Copper `#C88C5F` (shepherd's coat) — primary accent / CTA
 - Tan Highlight `#E0C0A0` — warm detail / hover
 - Warm White `#F2EEE6` — primary copy on dark
-- Dark surface ramp (navy-tinted): `#04161F` / `#082838` / `#0A2E40` / `#0D3548` / `#123F54` / `#1A4E63`
+- Dark surface ramp (re-anchored on the true navy): `#0A1E2E` / `#0F283D` / `#143447` / `#193C50` / `#21485C` / `#2B5468`
 
 **Typography:** LOCKED — logo-matched (revised 2026-06-01; supersedes the earlier Caslon "Heritage" pick).
 - Display/headlines: **Barlow Semi Condensed** (700, 800) — bold condensed geometric grotesque that matches the logo wordmark ("JACKSON VETERINARY CLINIC" / "EST. 1981"). **Headlines are sentence case**; the header/footer wordmark is uppercase to echo the mark.
@@ -209,6 +209,24 @@ All color lives in `assets/css/tokens.css`, extracted from the 1981 logo. team.h
 ---
 
 ## Session Log
+
+### 2026-06-02 — Services image cards + dental full redesign + palette correction + 2026 motion (Brees)
+- **Palette corrected to the TRUE logo colors (`tokens.css`, affects ALL pages):** sampled the 1981 logo disc — real navy is `#0F283D` (old `#082838` was too dark/green). Updated `--ink-900` and re-anchored the dark ramp: `--ink-950 #0A1E2E` · `--ink-850 #143447` · `--ink-800 #193C50` · `--ink-700 #21485C` · `--ink-600 #2B5468`. Copper → **`#C88C5F`** per Brees. copper-bright/deep unchanged. NOTE: a few hardcoded `rgba(200,136,88,…)` tint/`rgba(4,22,31,…)` scrim values in page CSS were NOT mass-updated (subtle, low-alpha) — fine for now.
+- **Sticky header → solid logo navy:** `header.scrolled` now `background: var(--ink-900)` opaque (dropped frosted blur). Applied to dental, services, team.
+- **Services hub (`services.html`) — image-led cards:** killed the flat gradient+border "glass boxes" (AI tell). Each card now leads with a real photo (3:2) on a solid `--ink-800` card, soft shadow, hover lift + image zoom. Removed the 01–11 numbers (read as a finite list). Balanced cat/dog imagery (logo = dog+cat): cats on Senior/Diagnostics/Echo/Dermatology/End-of-Life; dogs on Wellness/Puppy&Kitten/Dental/Laser/Emergency; Surgery = instruments. Pexels placeholders `assets/images/svc-*.jpg` (+ reused `dental-dog.jpg`). Swap for real Jackson photos later.
+- **Dental spoke (`dental-care.html`) — major redesign:**
+  - Removed ALL glass boxes + the copper `border-left` AI tell (feat + callout cards → solid, no border).
+  - **Beige band:** "Complete dental care" feature section uses `--sand` bg + `--paper` cards + navy text = the reusable light-section pattern. Distinct icons per card (sparkle / magnifier / tooth / gift) — were all identical checkmarks.
+  - **Tightened colors:** one dark (`--ink-900`) everywhere, ONE beige band, `--ink-950` only in footer; removed copper radial glows.
+  - **Hero text left-aligned** (fixed `.wrap` content-width centering bug, same as team).
+  - **"Planning the visit"** = cat photo (layered: deep shadow + offset copper panel) + "What to expect" + When/Before items. Added a cat (tabby yawn `dental-cat.jpg`) → page balances dog-top / cat-bottom.
+  - **Quote moment** moved UP to right after the intro; centered compact pull-quote (copper mark + centered quote + copper-accent parenthetical + centered rule). Copy verbatim.
+  - **CTA** = full-bleed bg image (`dental-cta-bg.jpg`, rural dusk) under a navy veil.
+  - **Depth pass (anti-"google slide"):** film-grain overlay on the navy, deep image shadows, elevated cards.
+  - **2026 motion:** Lenis smooth scroll (CDN) + anchor easing, hero parallax (video scale / copy drift+fade), native scroll-timeline image parallax, blur-rise reveals, magnetic buttons, animated nav underlines. Custom cursor built then REMOVED per Brees. All gated behind `prefers-reduced-motion` + touch.
+  - **Hero video** → warm golden-hour dog (`dental-hero.mp4` + poster); replaced the cold-blue close-up. (ffmpeg `hflip` used earlier; ffmpeg at `…/WinGet/Links/ffmpeg.exe`.)
+- **Screenshot gotcha:** headless blows up the `min-height:72vh` hero — temporarily `sed` it to `620px` for full-page captures, then revert. Playwright global install present but lib not resolvable; Edge `--headless=new` (+ `--force-prefers-reduced-motion` to show reveals) works.
+- **TODO next:** propagate 2026 motion + corrected palette to services + team; extract shared `assets/css/site.css` (header/footer/base still duplicated across pages); build remaining 9 spokes on the dental mold; real Jackson photos/video; JotForm wiring.
 
 ### 2026-06-01 — Services hub + spoke template + media (Brees)
 - **SEO strategy — hub-and-spoke (decided with Brees).** Pulled the live `/services/` page (https://www.jacksonvet.net/services/, scraped to `assets/copy/services-source.md`). KEY INSIGHT: the old site is ONE `/services/` page with 26 in-page anchor sections, so Google indexes a single URL — there is no per-service ranking to "lose." Priority is (1) keep a strong Services hub + 301 the old `/services/` → new `/services/`, and (2) add standalone spoke pages as pure upside (rank for "[service] + Jackson GA"). To avoid thin content, CONSOLIDATE the 26 topics into ~11 substantial grouped pages. Rejected: one-page-only (misses upside) and page-per-service (24 thin pages).

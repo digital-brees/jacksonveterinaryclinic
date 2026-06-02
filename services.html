@@ -25,7 +25,7 @@
 
   /* ---------- Header ---------- */
   header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; transition: background .4s ease, box-shadow .4s ease, padding .4s ease; padding: 18px 0; }
-  header.scrolled { background: rgba(4, 22, 31, 0.86); backdrop-filter: blur(12px); box-shadow: 0 1px 0 var(--line); padding: 10px 0; }
+  header.scrolled { background: var(--ink-900); box-shadow: 0 1px 0 var(--line); padding: 10px 0; }
   .nav { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
   .brand { display: flex; align-items: center; gap: 14px; }
   .brand img { width: 90px; height: 90px; transition: width .4s, height .4s; }
@@ -61,22 +61,30 @@
   .svc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 22px; }
 
   .svc-card {
-    position: relative; display: flex; flex-direction: column;
-    background: linear-gradient(180deg, var(--ink-850), var(--ink-900));
-    border: 1px solid var(--line); border-radius: var(--r-lg); padding: 28px 26px 26px;
-    transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease;
+    position: relative; display: flex; flex-direction: column; overflow: hidden;
+    background: var(--ink-800);
+    border-radius: var(--r-lg);
+    box-shadow: 0 18px 40px -28px rgba(0,0,0,.7);
+    transition: transform .35s ease, box-shadow .35s ease;
   }
-  .svc-card:hover { transform: translateY(-5px); border-color: var(--line-strong); box-shadow: 0 30px 60px -30px rgba(0,0,0,.7); }
-  .svc-card .num { font-family: var(--font-display); font-weight: 700; font-size: 1rem; color: var(--copper); letter-spacing: .08em; }
-  .svc-card h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.5rem; margin: 8px 0 10px; line-height: 1.1; }
+  .svc-card:hover { transform: translateY(-6px); box-shadow: 0 34px 64px -26px rgba(0,0,0,.85); }
+  .svc-card.linkcard { cursor: pointer; }
+
+  /* image-topped */
+  .svc-thumb { position: relative; aspect-ratio: 3 / 2; overflow: hidden; background: var(--ink-850); }
+  .svc-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s cubic-bezier(.2,.6,.2,1); }
+  .svc-card:hover .svc-thumb img { transform: scale(1.06); }
+  .svc-thumb::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, transparent 42%, rgba(13,53,72,.22) 76%, var(--ink-800)); }
+
+  .svc-body { display: flex; flex-direction: column; flex: 1; padding: 24px 26px 26px; }
+  .svc-card h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.5rem; margin: 0 0 10px; line-height: 1.1; }
   .svc-card p { color: var(--text-soft); font-size: var(--t-sm); margin-bottom: 16px; }
   .svc-card .subs { font-size: var(--t-xs); color: var(--text-mute); letter-spacing: .02em; padding-top: 14px; margin-top: auto; border-top: 1px solid rgba(192,184,168,.18); }
   .svc-card .more { display: inline-flex; align-items: center; gap: 8px; font-size: var(--t-sm); font-weight: 600; color: var(--text); margin-top: 16px; }
   .svc-card .more .arr { color: var(--copper); transition: transform .25s; }
   .svc-card:hover .more { color: var(--copper-bright); }
   .svc-card:hover .more .arr { transform: translateX(4px); }
-  .svc-card .tag { position: absolute; top: 20px; right: 20px; font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-900); background: var(--sand-lt); padding: 4px 9px; border-radius: var(--r-pill); }
-  .svc-card.linkcard { cursor: pointer; }
+  .svc-card .tag { position: absolute; top: 14px; right: 14px; z-index: 2; font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-900); background: var(--sand-lt); padding: 5px 10px; border-radius: var(--r-pill); box-shadow: 0 6px 16px -6px rgba(0,0,0,.5); }
 
   /* small utility row under last band */
   .alsorow { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 12px 26px; align-items: center; font-size: var(--t-sm); color: var(--text-soft); }
@@ -162,27 +170,33 @@
   <div class="svc-grid">
 
     <article class="svc-card linkcard reveal" data-href="wellness-preventive-care.html">
-      <span class="num">01</span>
-      <h3>Wellness &amp; Preventive Care</h3>
-      <p>Regular checkups establish a baseline for your pet's health and help us catch problems before they become serious.</p>
-      <div class="subs">Wellness exams · Vaccinations · Parasite prevention · Nutritional counseling · Microchipping</div>
-      <a class="more" href="wellness-preventive-care.html">Learn more <span class="arr">→</span></a>
+      <div class="svc-thumb"><img src="assets/images/svc-wellness.jpg" alt="A dog and cat resting together at home" loading="lazy"></div>
+      <div class="svc-body">
+        <h3>Wellness &amp; Preventive Care</h3>
+        <p>Regular checkups establish a baseline for your pet's health and help us catch problems before they become serious.</p>
+        <div class="subs">Wellness exams · Vaccinations · Parasite prevention · Nutritional counseling · Microchipping</div>
+        <a class="more" href="wellness-preventive-care.html">Learn more <span class="arr">→</span></a>
+      </div>
     </article>
 
     <article class="svc-card linkcard reveal" data-href="puppy-kitten-care.html">
-      <span class="num">02</span>
-      <h3>Puppy &amp; Kitten Care</h3>
-      <p>A nose-to-tail start for your newest family member — vaccinations, nutrition, socialization, and all the guidance you need.</p>
-      <div class="subs">First exams · Vaccine series · New-owner guidance</div>
-      <a class="more" href="puppy-kitten-care.html">Learn more <span class="arr">→</span></a>
+      <div class="svc-thumb"><img src="assets/images/svc-puppy-kitten.jpg" alt="A puppy and a kitten lounging together in the sun" loading="lazy"></div>
+      <div class="svc-body">
+        <h3>Puppy &amp; Kitten Care</h3>
+        <p>A nose-to-tail start for your newest family member — vaccinations, nutrition, socialization, and all the guidance you need.</p>
+        <div class="subs">First exams · Vaccine series · New-owner guidance</div>
+        <a class="more" href="puppy-kitten-care.html">Learn more <span class="arr">→</span></a>
+      </div>
     </article>
 
     <article class="svc-card linkcard reveal" data-href="senior-care.html">
-      <span class="num">03</span>
-      <h3>Senior Care</h3>
-      <p>As pets age, annual exams and bloodwork become even more critical. We help your companion thrive in their golden years.</p>
-      <div class="subs">Geriatric exams · Bloodwork panels · Organ &amp; thyroid screening</div>
-      <a class="more" href="senior-care.html">Learn more <span class="arr">→</span></a>
+      <div class="svc-thumb"><img src="assets/images/svc-senior.jpg" alt="A fluffy cat resting comfortably on a soft bed" loading="lazy"></div>
+      <div class="svc-body">
+        <h3>Senior Care</h3>
+        <p>As pets age, annual exams and bloodwork become even more critical. We help your companion thrive in their golden years.</p>
+        <div class="subs">Geriatric exams · Bloodwork panels · Organ &amp; thyroid screening</div>
+        <a class="more" href="senior-care.html">Learn more <span class="arr">→</span></a>
+      </div>
     </article>
 
   </div>
@@ -198,19 +212,23 @@
   <div class="svc-grid">
 
     <article class="svc-card linkcard reveal" data-href="surgery.html">
-      <span class="num">04</span>
-      <h3>Surgery</h3>
-      <p>From routine spays and neuters to orthopedic procedures, our team provides skilled surgical care with comprehensive pre- and post-op support.</p>
-      <div class="subs">Spay &amp; neuter · Orthopedic · C-sections · Mass removal · Amputation</div>
-      <a class="more" href="surgery.html">Learn more <span class="arr">→</span></a>
+      <div class="svc-thumb"><img src="assets/images/svc-surgery.jpg" alt="Sterile surgical instruments laid out and ready for a procedure" loading="lazy"></div>
+      <div class="svc-body">
+        <h3>Surgery</h3>
+        <p>From routine spays and neuters to orthopedic procedures, our team provides skilled surgical care with comprehensive pre- and post-op support.</p>
+        <div class="subs">Spay &amp; neuter · Orthopedic · C-sections · Mass removal · Amputation</div>
+        <a class="more" href="surgery.html">Learn more <span class="arr">→</span></a>
+      </div>
     </article>
 
     <article class="svc-card linkcard reveal" data-href="dental-care.html">
-      <span class="num">05</span>
-      <h3>Dental Care</h3>
-      <p>Dental scaling removes tartar before bacteria can reach the heart, liver, and kidneys. Every pet goes home with their own dental kit.</p>
-      <div class="subs">Cleaning &amp; scaling · Extractions · Oral exams · Home care</div>
-      <a class="more" href="dental-care.html">Learn more <span class="arr">→</span></a>
+      <div class="svc-thumb"><img src="assets/images/dental-dog.jpg" alt="A healthy, smiling dog" loading="lazy"></div>
+      <div class="svc-body">
+        <h3>Dental Care</h3>
+        <p>Dental scaling removes tartar before bacteria can reach the heart, liver, and kidneys. Every pet goes home with their own dental kit.</p>
+        <div class="subs">Cleaning &amp; scaling · Extractions · Oral exams · Home care</div>
+        <a class="more" href="dental-care.html">Learn more <span class="arr">→</span></a>
+      </div>
     </article>
 
   </div>
@@ -226,36 +244,43 @@
   <div class="svc-grid">
 
     <article class="svc-card linkcard reveal" data-href="diagnostics-imaging.html">
-      <span class="num">06</span>
-      <h3>Diagnostics &amp; Imaging</h3>
-      <p>Digital X-rays, ultrasound, and a full in-house laboratory let us look inside the body and deliver results in minutes, not days.</p>
-      <div class="subs">Digital X-rays · Ultrasound · In-house lab · Onsite diagnostics</div>
-      <a class="more" href="diagnostics-imaging.html">Learn more <span class="arr">→</span></a>
+      <div class="svc-thumb"><img src="assets/images/svc-diagnostics.jpg" alt="A tabby cat gazing intently with striking eyes" loading="lazy"></div>
+      <div class="svc-body">
+        <h3>Diagnostics &amp; Imaging</h3>
+        <p>Digital X-rays, ultrasound, and a full in-house laboratory let us look inside the body and deliver results in minutes, not days.</p>
+        <div class="subs">Digital X-rays · Ultrasound · In-house lab · Onsite diagnostics</div>
+        <a class="more" href="diagnostics-imaging.html">Learn more <span class="arr">→</span></a>
+      </div>
     </article>
 
     <article class="svc-card linkcard reveal" data-href="echocardiography.html">
-      <span class="tag">New</span>
-      <span class="num">07</span>
-      <h3>Echocardiography</h3>
-      <p>Advanced cardiac ultrasound to evaluate heart function and detect disease early — now available right here in Jackson.</p>
-      <div class="subs">Cardiac ultrasound · Heart screening · Murmur work-ups</div>
-      <a class="more" href="echocardiography.html">Learn more <span class="arr">→</span></a>
+      <div class="svc-thumb"><span class="tag">New</span><img src="assets/images/svc-echo.jpg" alt="A peaceful cat resting in warm light" loading="lazy"></div>
+      <div class="svc-body">
+        <h3>Echocardiography</h3>
+        <p>Advanced cardiac ultrasound to evaluate heart function and detect disease early — now available right here in Jackson.</p>
+        <div class="subs">Cardiac ultrasound · Heart screening · Murmur work-ups</div>
+        <a class="more" href="echocardiography.html">Learn more <span class="arr">→</span></a>
+      </div>
     </article>
 
     <article class="svc-card linkcard reveal" data-href="laser-therapy-pain.html">
-      <span class="num">08</span>
-      <h3>Laser Therapy &amp; Pain Management</h3>
-      <p>Cold laser therapy speeds healing and eases chronic pain, part of our commitment to keeping every patient comfortable.</p>
-      <div class="subs">Cold laser therapy · Post-op recovery · Chronic pain relief</div>
-      <a class="more" href="laser-therapy-pain.html">Learn more <span class="arr">→</span></a>
+      <div class="svc-thumb"><img src="assets/images/svc-laser.jpg" alt="A dog lying comfortably and relaxed on a blanket" loading="lazy"></div>
+      <div class="svc-body">
+        <h3>Laser Therapy &amp; Pain Management</h3>
+        <p>Cold laser therapy speeds healing and eases chronic pain, part of our commitment to keeping every patient comfortable.</p>
+        <div class="subs">Cold laser therapy · Post-op recovery · Chronic pain relief</div>
+        <a class="more" href="laser-therapy-pain.html">Learn more <span class="arr">→</span></a>
+      </div>
     </article>
 
     <article class="svc-card linkcard reveal" data-href="dermatology.html">
-      <span class="num">09</span>
-      <h3>Dermatology</h3>
-      <p>Skin is the body's largest organ. We diagnose and treat allergies, infections, parasites, and more with targeted testing.</p>
-      <div class="subs">Allergy &amp; fungal testing · Cultures · Biopsies</div>
-      <a class="more" href="dermatology.html">Learn more <span class="arr">→</span></a>
+      <div class="svc-thumb"><img src="assets/images/svc-derm.jpg" alt="A cat scratching under its chin outdoors" loading="lazy"></div>
+      <div class="svc-body">
+        <h3>Dermatology</h3>
+        <p>Skin is the body's largest organ. We diagnose and treat allergies, infections, parasites, and more with targeted testing.</p>
+        <div class="subs">Allergy &amp; fungal testing · Cultures · Biopsies</div>
+        <a class="more" href="dermatology.html">Learn more <span class="arr">→</span></a>
+      </div>
     </article>
 
   </div>
@@ -271,19 +296,23 @@
   <div class="svc-grid">
 
     <article class="svc-card linkcard reveal" data-href="emergency-urgent-care.html">
-      <span class="num">10</span>
-      <h3>Emergency &amp; Urgent Care</h3>
-      <p>Emergencies are stressful. During clinic hours, call us right away and we'll do everything we can to help you and your pet.</p>
-      <div class="subs">Same-day urgent visits · Call (770) 775-5710</div>
-      <a class="more" href="emergency-urgent-care.html">Learn more <span class="arr">→</span></a>
+      <div class="svc-thumb"><img src="assets/images/svc-emergency.jpg" alt="A close-up of an alert dog with a focused gaze" loading="lazy"></div>
+      <div class="svc-body">
+        <h3>Emergency &amp; Urgent Care</h3>
+        <p>Emergencies are stressful. During clinic hours, call us right away and we'll do everything we can to help you and your pet.</p>
+        <div class="subs">Same-day urgent visits · Call (770) 775-5710</div>
+        <a class="more" href="emergency-urgent-care.html">Learn more <span class="arr">→</span></a>
+      </div>
     </article>
 
     <article class="svc-card linkcard reveal" data-href="end-of-life-care.html">
-      <span class="num">11</span>
-      <h3>End-of-Life Care</h3>
-      <p>We're here for you and your pet, even at the end — with compassion, patience, and respect for one of life's hardest decisions.</p>
-      <div class="subs">Compassionate euthanasia · Quality-of-life guidance</div>
-      <a class="more" href="end-of-life-care.html">Learn more <span class="arr">→</span></a>
+      <div class="svc-thumb"><img src="assets/images/svc-eol.jpg" alt="An orange cat resting peacefully by a window" loading="lazy"></div>
+      <div class="svc-body">
+        <h3>End-of-Life Care</h3>
+        <p>We're here for you and your pet, even at the end — with compassion, patience, and respect for one of life's hardest decisions.</p>
+        <div class="subs">Compassionate euthanasia · Quality-of-life guidance</div>
+        <a class="more" href="end-of-life-care.html">Learn more <span class="arr">→</span></a>
+      </div>
     </article>
 
   </div>

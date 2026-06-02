@@ -6,18 +6,18 @@
 
 :root {
   /* --- Brand core (straight from the logo) --- */
-  --ink-900: #082838;   /* logo disc navy — page base */
+  --ink-900: #0F283D;   /* logo disc navy — page base (sampled from the 1981 mark) */
   --sand:    #C0B8A8;   /* logo inner circle — warm neutral */
   --sand-lt: #E0C0A0;   /* logo highlight tan */
-  --copper:  #C88858;   /* shepherd's coat — primary accent / CTA */
+  --copper:  #C88C5F;   /* shepherd's coat — primary accent / CTA */
   --paper:   #F8F8F8;   /* logo lettering / cat — near-white */
 
   /* --- Dark surface ramp (navy-tinted) --- */
-  --ink-950: #04161F;   /* deepest — behind base, footer */
-  --ink-850: #0A2E40;   /* raised panels */
-  --ink-800: #0D3548;   /* cards */
-  --ink-700: #123F54;   /* card hover / borders-strong */
-  --ink-600: #1A4E63;   /* dividers, hairlines on dark */
+  --ink-950: #0A1E2E;   /* deepest — behind base, footer */
+  --ink-850: #143447;   /* raised panels */
+  --ink-800: #193C50;   /* cards */
+  --ink-700: #21485C;   /* card hover / borders-strong */
+  --ink-600: #2B5468;   /* dividers, hairlines on dark */
 
   /* --- Accent tints --- */
   --copper-bright: #D89B6B; /* hover / active accent */
