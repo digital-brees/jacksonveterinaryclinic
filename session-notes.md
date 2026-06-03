@@ -213,6 +213,10 @@ All color lives in `assets/css/tokens.css`, extracted from the 1981 logo. team.h
 
 ## Session Log
 
+### 2026-06-03 — Feedbucket widget added to preview (Brees)
+- Added the **Feedbucket** client-feedback script to `<head>` on all 5 pages (index, team, services, dental-care, wellness-preventive-care). Key: `WVqHB42r4QIPaLzRa5k1`. Marked "preview only" in a comment.
+- ⚠️ **Launch checklist:** remove the Feedbucket script before going live (staging/review tool, not for the public site).
+
 ### 2026-06-03 — Vercel preview: Team is the temp index (Brees)
 - **Issue:** Vercel link showed a blank page — root `/` serves `index.html`, which was the empty placeholder stub (real homepage not built, awaiting Alie's copy).
 - **Fix:** **`index.html` is now a copy of `team.html`** (Team page serves at the root) per Brees. First tried a redirect → /services.html, then switched to Team-as-index. `noindex` retained.
