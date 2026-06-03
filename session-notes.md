@@ -210,6 +210,12 @@ All color lives in `assets/css/tokens.css`, extracted from the 1981 logo. team.h
 
 ## Session Log
 
+### 2026-06-03 — Motion propagated to services+team + new nav (all pages) (Brees)
+- **2026 motion layer propagated to `services.html` + `team.html`** (was dental-only): Lenis smooth scroll (CDN) + in-page anchor easing, hero parallax (video scale / hero copy drift+fade via `.hero .wrap`), refined blur-rise reveals, magnetic buttons, animated nav underlines. Team's bio modal pauses Lenis via a MutationObserver on `#modal.open`. NO custom cursor (Brees removed it). All gated behind `prefers-reduced-motion` + touch. (Image scroll-parallax / `.media-frame` is still dental-only — services cards already have hover zoom; team has flip cards.)
+- **New nav (all 3 pages):** Home · Team · Services · **Resources ▾** (Forms / FAQs dropdown) · Online Store · Contact · **phone 770-775-5710** (copper icon) · [Request Appointment]. Dropped "Our Story" + "Pricing" from nav. Resources dropdown = CSS hover/`:focus-within` panel on desktop, expands inline-indented on mobile. Online Store → VetCove `https://jacksonveterinaryclinic.ourvet.com` (new tab). **Forms/FAQs/Contact = `#` placeholders** (pages not built yet — wire when built). Active link uses the animated copper underline. Underline suppressed on submenu links + phone.
+- Nav fits one line at 1440 (menu gap tightened to 24px). Burger breakpoint still 860px.
+- **Still TODO:** extract shared `assets/css/site.css` (header/footer/nav/motion now duplicated across 3 pages — getting heavy); build Forms/FAQs/Contact pages + wire nav; remaining 9 service spokes; real Jackson photos/video; JotForm.
+
 ### 2026-06-02 — Services image cards + dental full redesign + palette correction + 2026 motion (Brees)
 - **Palette corrected to the TRUE logo colors (`tokens.css`, affects ALL pages):** sampled the 1981 logo disc — real navy is `#0F283D` (old `#082838` was too dark/green). Updated `--ink-900` and re-anchored the dark ramp: `--ink-950 #0A1E2E` · `--ink-850 #143447` · `--ink-800 #193C50` · `--ink-700 #21485C` · `--ink-600 #2B5468`. Copper → **`#C88C5F`** per Brees. copper-bright/deep unchanged. NOTE: a few hardcoded `rgba(200,136,88,…)` tint/`rgba(4,22,31,…)` scrim values in page CSS were NOT mass-updated (subtle, low-alpha) — fine for now.
 - **Sticky header → solid logo navy:** `header.scrolled` now `background: var(--ink-900)` opaque (dropped frosted blur). Applied to dental, services, team.
