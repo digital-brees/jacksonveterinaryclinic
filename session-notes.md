@@ -1,7 +1,7 @@
 # Jackson Veterinary Clinic — Session Notes
 
-**Status:** Brand foundation locked + Team page built + Services hub (image-led cards) + Dental spoke fully redesigned (tight palette, beige band, distinct icons, depth pass, 2026 motion layer, warm hero). Palette corrected to the TRUE logo navy `#0F283D` + copper `#C88C5F`. Homepage build still awaiting Alie's copy.
-**Created:** 2026-05-27 | **Last worked:** 2026-06-02
+**Status:** Brand foundation locked + Team page built + Services hub (image-led cards) + Dental spoke fully redesigned (tight palette, beige band, distinct icons, depth pass, 2026 motion layer, warm hero). Palette corrected to the TRUE logo navy `#0F283D` + copper `#C88C5F`. **Social icons (FB + IG) now in header + footer on all 3 pages; nav button text fixed to navy; team hero + CTA imagery refreshed.** Homepage build still awaiting Alie's copy.
+**Created:** 2026-05-27 | **Last worked:** 2026-06-03
 **Designer:** Brees
 **Repo:** `digital-brees/jacksonveterinaryclinic` (to be created)
 **Local path:** `C:\Users\brees\Claude Projects\Jackson Veterinary Clinic`
@@ -160,6 +160,9 @@ Confirm full sitemap with Brees + Andy before building.
 - `assets/css/tokens.css` — design tokens (palette, dark ramp, type scale, radius, spacing)
 - `assets/images/` — EMPTY, portraits still in Drive
 
+### Earmarked media (not yet downloaded — pull when the page is built)
+- **Surgery spoke hero video** → Pexels `https://www.pexels.com/download/video/7584599/` (Brees-chosen, 2026-06-03). Download + ffmpeg-compress to 1920px/faststart/no-audio like the other heroes when building `surgery.html`.
+
 ---
 
 ## Forms Plan (per DE JotForm Standard)
@@ -209,6 +212,18 @@ All color lives in `assets/css/tokens.css`, extracted from the 1981 logo. team.h
 ---
 
 ## Session Log
+
+### 2026-06-03 — Social icons + nav button fix + media refresh + dental badge (Brees)
+- **Social icons (Facebook + Instagram) added to header + footer on all 3 pages** (team / services / dental-care). Links: FB `https://www.facebook.com/JVCGeorgia`, IG `https://www.instagram.com/jacksonvetclinic/`. Header = bare circular icon links beside the phone/CTA (warm-white `--text`, 19px, subtle sand hover disc, copper-bright on hover, underline suppressed). Footer = bordered `.fsocial` circles under the brand blurb (sand icon → fills copper w/ navy glyph on hover). Both use solid glyphs (FB 'f', Simple-Icons IG).
+- **Instagram icon visibility fix:** header icons were `--text-soft` (sand) at 16px and the IG glyph read faint vs the FB 'f'. Bumped to `--text` (warm white) at 19px + hover disc — both now read clearly.
+- **Header CTA button text fixed to navy:** root cause was a cascade bug — `.menu a` (sand, specificity 0,1,1) was out-specifying `.btn { color: var(--ink-900) }` (0,1,0), so the nav "Request Appointment" button rendered sand/light while the in-page CTA buttons stayed navy. Added `.menu a.btn { color: var(--ink-900); }` on all 3 pages.
+- **Team hero video swapped** → Pexels #20337634, ffmpeg-compressed to 1920px / 30fps / no-audio / faststart = **2.0MB** `assets/video/hero.mp4` + regenerated `hero-poster.jpg`. (Replaced the earlier #6568960 swap from the same day.) Paths unchanged so no HTML edit.
+- **Team CTA background → cat:** replaced the golden-hour GSD (`cta-bg.jpg`) with a warm golden-hour tabby profile (Pexels #11767263, 1600px, 126KB) to balance the dog hero (logo = dog + cat). Repositioned the image layer to `40% 46%` (was `center 32%`) so the face/lit-whiskers sit in the band instead of cropping at the ears. Navy veil + copper top-glow overlay unchanged.
+- **Modal bio scroll fixed (team):** bios already had `overflow-y:auto` but Lenis was hijacking the wheel. Added `data-lenis-prevent` to `.modal-card` (canonical Lenis fix) — modal scrolls natively, page stays locked.
+- **Removed the "Room to grow" ghost/careers card** from the team grid. `.card.ghost` / `.btn-ghost` CSS left in place but now unused (strip during the shared-CSS extraction).
+- **Dental badge redesign:** the flat copper rectangle "Healthy mouth, happy pet" → copper **gradient** badge w/ inner top highlight, softer layered shadow, and a **tooth icon** in a tinted navy disc (`.b-ico`). Markup gained the icon span; copy unchanged.
+- **Earmarked media:** surgery spoke hero → Pexels #7584599 (download + compress when `surgery.html` is built; noted under Assets ▸ Earmarked media).
+- **Reminder:** header/footer/nav/social/motion are now duplicated across all 3 pages — the shared `assets/css/site.css` extraction is increasingly overdue before building the remaining 9 spokes.
 
 ### 2026-06-03 — Motion propagated to services+team + new nav (all pages) (Brees)
 - **2026 motion layer propagated to `services.html` + `team.html`** (was dental-only): Lenis smooth scroll (CDN) + in-page anchor easing, hero parallax (video scale / hero copy drift+fade via `.hero .wrap`), refined blur-rise reveals, magnetic buttons, animated nav underlines. Team's bio modal pauses Lenis via a MutationObserver on `#modal.open`. NO custom cursor (Brees removed it). All gated behind `prefers-reduced-motion` + touch. (Image scroll-parallax / `.media-frame` is still dental-only — services cards already have hover zoom; team has flip cards.)
