@@ -213,6 +213,19 @@ All color lives in `assets/css/tokens.css`, extracted from the 1981 logo. team.h
 
 ## Session Log
 
+### 2026-06-03 — Wellness spoke built + nav/footer demo-gating (Brees)
+- **Built `wellness-preventive-care.html`** — 2nd spoke on the dental mold. Sections: hero ("A lifetime of healthy years.") → overview ("Care that looks ahead." — verbatim Wellness Exams copy) → quote moment (verbatim Preventative Care line) → beige feature band (Wellness Exams · Vaccinations · Parasite Prevention · Nutritional Counseling, distinct icons) → lower section (Microchipping + "how often to visit", verbatim) → CTA. Updated title/meta/Service JSON-LD. Hub "Learn more" already pointed here.
+- **Copy fidelity:** body paragraphs verbatim from jacksonvet.net; headlines/subheads ours (same convention as dental).
+- **Unique media (no duplicates anywhere on site):** `wellness-hero.mp4` (slow-mo cat being petted, hflipped so the head clears the left-aligned headline, 2.1MB) + poster; `wellness-overview.jpg` (calm dog at home); `wellness-cat.jpg` (woman petting cat by window); `wellness-cta-bg.jpg` (Border Collie, golden field). Earlier drafts reused services-hero/svc-wellness/svc-cta-bg — all replaced per Brees ("no duplicate images").
+- **Services nav → dropdown (all 4 pages):** Services label still links to `services.html`, with a hover submenu: **Wellness & Preventive Care** + **Dental Care**. Current spoke highlights copper in the submenu.
+- **Demo-gating — only Team / Services / Dental Care / Wellness navigate.** Everything unbuilt is dimmed + non-clickable via `a.soon` (pointer-events:none, opacity .45): **Home** (nav + footer), **Resources → Forms/FAQs**, **Contact**, **FAQs** (footer), **Our Story**.
+  - **Home fully disabled** (per Brees — index.html is still a stub): nav link dimmed, **logo href removed** (logo no longer navigates), footer Home removed.
+  - **Request Appointment buttons no longer navigate** (per Brees — appointment form not built): nav button, hero button, and bottom-CTA button on every page converted to `role="button" aria-disabled onclick="return false"`. Kept full copper styling (still read as primary CTA), just unwired — ready for JotForm later.
+- **Footer Explore rebuilt (all 4):** Team · Services · FAQs (dimmed) · **Online Store** (renamed from "Online Pharmacy", external VetCove). (A separate in-content "Online Pharmacy" link on services.html remains functional.)
+- **Services CTA image** added earlier this session (`svc-cta-bg.jpg`, owner+dog rural dusk) + **Instagram icon** bumped to 30px/18px in the utility bar for legibility.
+- **Spokes built: 2 of 11** (dental-care, wellness-preventive-care). 9 remain. Surgery hero earmarked: Pexels #7584599.
+- **STILL the top cleanup:** header/footer/utility-bar/motion/soon CSS now duplicated across 4 pages — extract shared `assets/css/site.css` before the next spokes.
+
 ### 2026-06-03 — Two-tier header + finish pass + card depth (Brees)
 - **Header rebuilt as a two-tier system** (all 3 pages) — the single overloaded row was too tight. Now: a **slim utility bar** (phone · hours on the left; Online Store + FB/IG on the right) above the **main nav** (logo + Home/Team/Services/Resources▾/Contact + Request Appointment). Online Store + phone + social all moved OUT of the main row into the utility bar.
   - Mobile: utility bar keeps phone (left) + social (right); hours/dividers/store hidden; **Online Store added to the slide-in menu** via a `.m-only` link so no link is lost.

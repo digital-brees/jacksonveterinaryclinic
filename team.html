@@ -289,13 +289,17 @@
   .util-store { font-size: var(--t-xs); font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--text-soft); }
   .util-store:hover { color: var(--copper-bright); }
   .utilbar .nav-social { gap: 4px; }
-  .utilbar .nav-social a { width: 28px; height: 28px; }
-  .utilbar .nav-social a svg { width: 16px; height: 16px; }
+  .utilbar .nav-social a { width: 30px; height: 30px; }
+  .utilbar .nav-social a svg { width: 18px; height: 18px; }
   /* CTA button finish: arrow + soft shadow */
   .menu a.btn { color: var(--ink-900); display: inline-flex; align-items: center; gap: 7px; box-shadow: 0 12px 24px -12px rgba(0,0,0,.55); }
   .menu a.btn .btn-arrow { font-size: 1.02em; line-height: 1; transition: transform .3s cubic-bezier(.16,.84,.3,1); }
   .menu a.btn:hover .btn-arrow { transform: translateX(3px); }
   .m-only { display: none; }
+  /* coming-soon (non-clickable) nav + footer items */
+  a.soon { pointer-events: none; opacity: .45; cursor: default; }
+  .menu a.soon::after, .submenu a.soon::after { display: none !important; }
+  .submenu a.active { color: var(--copper-bright); }
   @media (max-width: 860px) {
     .util-hours, .util-divider, .util-store { display: none; }
     .m-only { display: block; }
@@ -324,23 +328,29 @@
     </div>
   </div>
   <div class="wrap nav">
-    <a class="brand" href="index.html" aria-label="Jackson Veterinary Clinic — Est. 1981, Jackson GA">
+    <a class="brand" aria-label="Jackson Veterinary Clinic — Est. 1981, Jackson GA" aria-disabled="true">
       <img src="assets/logo/logo-badge.png" alt="Jackson Veterinary Clinic">
     </a>
     <nav class="menu" id="menu">
-      <a href="index.html">Home</a>
+      <a class="soon" aria-disabled="true">Home</a>
       <a href="team.html" class="active">Team</a>
-      <a href="services.html">Services</a>
+      <div class="has-sub">
+        <a href="services.html" class="sub-toggle">Services <svg class="caret" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></a>
+        <div class="submenu">
+          <a href="wellness-preventive-care.html">Wellness &amp; Preventive Care</a>
+          <a href="dental-care.html">Dental Care</a>
+        </div>
+      </div>
       <div class="has-sub">
         <a href="#" class="sub-toggle" aria-haspopup="true" onclick="return false">Resources <svg class="caret" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></a>
         <div class="submenu">
-          <a href="#">Forms</a>
-          <a href="#">FAQs</a>
+          <a class="soon" aria-disabled="true">Forms</a>
+          <a class="soon" aria-disabled="true">FAQs</a>
         </div>
       </div>
-      <a href="#">Contact</a>
+      <a class="soon" aria-disabled="true">Contact</a>
       <a class="m-only" href="https://jacksonveterinaryclinic.ourvet.com" target="_blank" rel="noopener">Online Store</a>
-      <a href="#request" class="btn">Request Appointment <span class="btn-arrow" aria-hidden="true">→</span></a>
+      <a class="btn" role="button" aria-disabled="true" onclick="return false">Request Appointment <span class="btn-arrow" aria-hidden="true">→</span></a>
     </nav>
     <div class="burger" id="burger" aria-label="Menu" role="button" tabindex="0"><span></span><span></span><span></span></div>
   </div>
@@ -434,7 +444,7 @@
     <span class="eyebrow">New patient or returning friend</span>
     <h2 class="display">Let's get your pet on the schedule.</h2>
     <p>We don't do anonymous online booking — just send a request and a real person from our team will reach out to find a time that works.</p>
-    <a href="#" class="btn">Request an Appointment</a>
+    <a class="btn" role="button" aria-disabled="true" onclick="return false">Request an Appointment</a>
   </div>
 </section>
 
@@ -461,10 +471,10 @@
       </div>
       <div class="fcol">
         <h4>Explore</h4>
-        <a href="index.html">Home</a>
-        <a href="#">Our Story</a>
         <a href="team.html">Team</a>
-        <a href="https://jacksonveterinaryclinic.ourvet.com" target="_blank" rel="noopener">Online Pharmacy</a>
+        <a href="services.html">Services</a>
+        <a class="soon" aria-disabled="true">FAQs</a>
+        <a href="https://jacksonveterinaryclinic.ourvet.com" target="_blank" rel="noopener">Online Store</a>
       </div>
     </div>
     <div class="fbar">

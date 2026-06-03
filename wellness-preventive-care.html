@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>Veterinary Services in Jackson, GA | Jackson Veterinary Clinic</title>
-<meta name="description" content="Full-service veterinary care for the pets of Jackson and Butts County, GA — wellness, surgery, dentistry, diagnostics, echocardiography, laser therapy, and urgent care. Family-owned since 1981.">
+<title>Pet Wellness &amp; Preventive Care in Jackson, GA | Jackson Veterinary Clinic</title>
+<meta name="description" content="Wellness exams, vaccinations, parasite prevention, nutritional counseling, and microchipping for dogs and cats in Jackson, GA. Preventive care that keeps your pet healthy — Jackson Veterinary Clinic, family-owned since 1981.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -13,17 +13,16 @@
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body {
-    background: var(--ink-900); color: var(--text); font-family: var(--font-sans);
-    font-size: var(--t-base); line-height: 1.65; -webkit-font-smoothing: antialiased; overflow-x: hidden;
-  }
+  body { background: var(--ink-900); color: var(--text); font-family: var(--font-sans); font-size: var(--t-base); line-height: 1.7; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  /* film-grain texture — kills the flat 'slide' fill */
+  body::after { content: ""; position: fixed; inset: 0; z-index: 9000; pointer-events: none; opacity: .05; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
   a { color: inherit; text-decoration: none; }
   img { display: block; max-width: 100%; }
   .wrap { max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 56px); }
   .eyebrow { text-transform: uppercase; letter-spacing: 0.24em; font-size: var(--t-xs); font-weight: 700; color: var(--copper); }
-  .display { font-family: var(--font-display); font-weight: 700; letter-spacing: -0.005em; line-height: 1.02; }
+  .display { font-family: var(--font-display); font-weight: 700; letter-spacing: -0.005em; line-height: 1.04; }
 
-  /* ---------- Header ---------- */
+  /* Header */
   header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; transition: background .4s ease, box-shadow .4s ease, padding .4s ease; padding: 0 0 18px; }
   header.scrolled { background: var(--ink-900); box-shadow: 0 16px 36px -18px rgba(0,0,0,.6), 0 1px 0 var(--line-strong); padding: 0 0 10px; }
   .nav { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
@@ -31,84 +30,86 @@
   .brand img { width: 90px; height: 90px; transition: width .4s, height .4s; }
   header.scrolled .brand img { width: 72px; height: 72px; }
   .menu { display: flex; align-items: center; gap: 30px; }
-  .menu a { font-size: var(--t-sm); color: var(--text-soft); font-weight: 500; letter-spacing: .01em; transition: color .2s; }
+  .menu a { font-size: var(--t-sm); color: var(--text-soft); font-weight: 500; transition: color .2s; }
   .menu a:hover, .menu a.active { color: var(--text); }
-  .menu a:not(.btn) { position: relative; }
-  .menu a:not(.btn)::after { content: ""; position: absolute; left: 0; right: 100%; bottom: -7px; height: 2px; background: var(--copper); transition: right .35s cubic-bezier(.16,.84,.3,1); }
-  .menu a:not(.btn):hover::after, .menu a:not(.btn).active::after { right: 0; }
-  .btn { display: inline-block; padding: 12px 24px; border-radius: var(--r-pill); background: var(--copper); color: var(--ink-900); font-weight: 700; font-size: var(--t-sm); transition: background .25s, transform .25s; white-space: nowrap; }
+  .btn { display: inline-block; padding: 13px 26px; border-radius: var(--r-pill); background: var(--copper); color: var(--ink-900); font-weight: 700; font-size: var(--t-sm); transition: background .25s, transform .25s; white-space: nowrap; }
   .btn:hover { background: var(--copper-bright); transform: translateY(-2px); }
   .btn-ghost { background: transparent; color: var(--text); box-shadow: inset 0 0 0 1.5px var(--line-strong); }
   .btn-ghost:hover { background: rgba(192,184,168,.08); box-shadow: inset 0 0 0 1.5px var(--copper); }
   .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; }
   .burger span { width: 24px; height: 2px; background: var(--text); transition: .3s; }
 
-  /* ---------- Hero ---------- */
-  .hero { position: relative; padding: 200px 0 90px; overflow: hidden; background: radial-gradient(120% 90% at 85% 0%, rgba(200,136,88,.16), transparent 55%), linear-gradient(180deg, var(--ink-950), var(--ink-900)); border-bottom: 1px solid var(--line); }
+  /* Hero */
+  .hero { position: relative; min-height: 72vh; display: flex; align-items: center; padding: 170px 0 90px; border-bottom: 1px solid var(--line); overflow: hidden; background: var(--ink-900); }
   .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
-  .hero-overlay { position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(90deg, rgba(4,22,31,.94) 0%, rgba(4,22,31,.74) 42%, rgba(6,30,43,.46) 78%, rgba(8,40,56,.30) 100%), linear-gradient(0deg, var(--ink-900) 2%, rgba(8,40,56,.16) 40%, transparent 64%); }
-  .hero-inner { position: relative; z-index: 2; }
-  .hero .eyebrow { display: inline-block; margin-bottom: 18px; }
-  .hero h1 { font-size: var(--t-3xl); max-width: 820px; }
+  .hero-overlay { position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(90deg, rgba(4,22,31,.94) 0%, rgba(4,22,31,.74) 45%, rgba(6,30,43,.46) 80%, rgba(8,40,56,.30) 100%), linear-gradient(0deg, var(--ink-900) 2%, transparent 62%); }
+  .hero .wrap { position: relative; z-index: 2; width: 100%; }
+  .hero h1 { font-size: var(--t-3xl); max-width: 760px; margin: 14px 0 18px; }
   .hero h1 .accent { color: var(--sand); }
-  .hero p.lede { font-size: var(--t-lg); color: var(--text-soft); max-width: 640px; margin-top: 22px; }
+  .hero p.lede { font-size: var(--t-lg); color: var(--text-soft); max-width: 600px; margin-bottom: 30px; }
 
-  /* ---------- Service bands ---------- */
-  .band { padding: clamp(56px, 8vw, 96px) 0 0; }
-  .band:last-of-type { padding-bottom: clamp(70px, 9vw, 120px); }
-  .band-head { max-width: 720px; margin-bottom: clamp(28px, 4vw, 44px); }
-  .band-head h2 { font-size: var(--t-2xl); margin: 12px 0 10px; }
-  .band-head p { color: var(--text-soft); }
-  .svc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 22px; }
+  /* Section base */
+  .section { padding: clamp(56px, 8vw, 104px) 0; }
+  .sec-eyebrow { display: inline-block; margin-bottom: 14px; }
 
-  .svc-card {
-    position: relative; display: flex; flex-direction: column; overflow: hidden;
-    background: var(--ink-800);
-    border-radius: var(--r-lg);
-    box-shadow: 0 18px 40px -28px rgba(0,0,0,.7);
-    transition: transform .35s ease, box-shadow .35s ease;
-  }
-  .svc-card:hover { transform: translateY(-6px); box-shadow: 0 34px 64px -26px rgba(0,0,0,.85); }
-  .svc-card.linkcard { cursor: pointer; }
+  /* Split (image + text) */
+  .split { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(34px, 6vw, 76px); align-items: center; }
+  .split-text h2 { font-size: var(--t-2xl); margin-bottom: 18px; }
+  .split-text p { color: var(--text-soft); }
+  .split-text p + p { margin-top: 18px; }
+  .split-text strong { color: var(--text); font-weight: 600; }
+  .split-media { position: relative; z-index: 0; }
+  .split-media .media-frame { position: relative; z-index: 2; border-radius: var(--r-lg); overflow: hidden; box-shadow: 0 38px 70px -32px rgba(0,0,0,.78); }
+  .split-media .media-frame img { width: 100%; display: block; aspect-ratio: 4/3; object-fit: cover; }
+  .split-media .badge { position: absolute; z-index: 3; left: -16px; bottom: -18px; display: inline-flex; align-items: center; gap: 11px; background: linear-gradient(135deg, var(--copper-bright), var(--copper) 72%); color: var(--ink-900); font-family: var(--font-display); font-weight: 700; font-size: 1.02rem; line-height: 1.12; letter-spacing: .005em; padding: 13px 20px 13px 13px; border-radius: 16px; box-shadow: 0 22px 46px -18px rgba(0,0,0,.74), inset 0 1px 0 rgba(255,255,255,.30); }
+  .split-media .badge .b-ico { flex: none; display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 50%; background: rgba(15,40,61,.14); }
+  .split-media .badge .b-ico svg { width: 19px; height: 19px; stroke: var(--ink-900); fill: none; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
 
-  /* image-topped */
-  .svc-thumb { position: relative; aspect-ratio: 3 / 2; overflow: hidden; background: var(--ink-850); }
-  .svc-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s cubic-bezier(.2,.6,.2,1); }
-  .svc-card:hover .svc-thumb img { transform: scale(1.06); }
-  .svc-thumb::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, transparent 42%, rgba(13,53,72,.22) 76%, var(--ink-800)); }
+  /* Feature grid — BEIGE light band (warm break in the dark page) */
+  .feat-wrap { background: var(--sand); }
+  .feat-wrap .eyebrow { color: var(--copper-deep); }
+  .feat-wrap .feat-head h2 { color: var(--ink-900); }
+  .feat-wrap .feat-head p { color: rgba(8,40,56,.74); }
+  .feat-head { max-width: 640px; margin-bottom: clamp(28px, 4vw, 48px); }
+  .feat-head h2 { font-size: var(--t-2xl); margin-bottom: 10px; }
+  .feat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px; }
+  .feat { background: var(--paper); border-radius: var(--r-lg); padding: 26px 24px; box-shadow: 0 24px 48px -26px rgba(8,40,56,.55); transition: transform .4s ease, box-shadow .4s ease; }
+  .feat:hover { transform: translateY(-7px); box-shadow: 0 38px 64px -26px rgba(8,40,56,.6); }
+  .feat .ic { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: rgba(200,136,88,.16); border: 1.5px solid var(--copper); margin-bottom: 16px; }
+  .feat .ic svg { width: 20px; height: 20px; stroke: var(--copper-deep); fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+  .feat h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.25rem; margin-bottom: 8px; color: var(--ink-900); }
+  .feat p { color: rgba(8,40,56,.72); font-size: var(--t-sm); }
 
-  .svc-body { display: flex; flex-direction: column; flex: 1; padding: 24px 26px 26px; }
-  .svc-card h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.5rem; margin: 0 0 10px; line-height: 1.1; }
-  .svc-card p { color: var(--text-soft); font-size: var(--t-sm); margin-bottom: 16px; }
-  .svc-card .subs { font-size: var(--t-xs); color: var(--text-mute); letter-spacing: .02em; padding-top: 14px; margin-top: auto; border-top: 1px solid rgba(192,184,168,.18); }
-  .svc-card .more { display: inline-flex; align-items: center; gap: 8px; font-size: var(--t-sm); font-weight: 600; color: var(--text); margin-top: 16px; }
-  .svc-card .more .arr { color: var(--copper); transition: transform .25s; }
-  .svc-card:hover .more { color: var(--copper-bright); }
-  .svc-card:hover .more .arr { transform: translateX(4px); }
-  .svc-card .tag { position: absolute; top: 14px; right: 14px; z-index: 2; font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-900); background: var(--sand-lt); padding: 5px 10px; border-radius: var(--r-pill); box-shadow: 0 6px 16px -6px rgba(0,0,0,.5); }
+  /* Quote moment — centered pull-quote, sits just after the intro */
+  .quote-band { position: relative; padding-top: clamp(48px, 7vw, 88px); padding-bottom: clamp(48px, 7vw, 88px); }
+  .quote-band .qb-inner { position: relative; max-width: 820px; margin: 0 auto; text-align: center; }
+  .quote-band .mark { display: block; font-family: var(--font-display); font-weight: 800; font-size: clamp(3.5rem, 6vw, 5.5rem); line-height: .6; color: var(--copper); margin-bottom: .12em; }
+  .quote-band .q { font-family: var(--font-display); font-weight: 700; font-size: var(--t-2xl); line-height: 1.16; letter-spacing: -.01em; max-width: 17ch; margin: 0 auto; }
+  .quote-band .q .accent { display: block; font-family: var(--font-accent); font-weight: 600; font-size: .42em; color: var(--copper); letter-spacing: .01em; margin-top: .55em; }
+  .quote-band .sub { position: relative; color: var(--text-soft); max-width: 560px; margin: 28px auto 0; padding-top: 24px; }
+  .quote-band .sub::before { content: ""; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 54px; height: 3px; background: var(--copper); border-radius: 999px; }
 
-  /* small utility row under last band */
-  .alsorow { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 12px 26px; align-items: center; font-size: var(--t-sm); color: var(--text-soft); }
-  .alsorow a { color: var(--sand); font-weight: 600; }
-  .alsorow .dotc { width: 5px; height: 5px; border-radius: 50%; background: var(--copper); display: inline-block; }
+  /* Planning the visit — cat photo (layered) + content */
+  .visit-top { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(30px, 5vw, 64px); align-items: center; }
+  .visit-media { position: relative; z-index: 0; }
+  .visit-media .media-frame { position: relative; z-index: 2; border-radius: var(--r-lg); overflow: hidden; box-shadow: 0 38px 70px -32px rgba(0,0,0,.78); }
+  .visit-media .media-frame img { width: 100%; display: block; aspect-ratio: 4/5; object-fit: cover; }
+  .visit-media::before { content: ""; position: absolute; inset: 22px -16px -16px 22px; border-radius: var(--r-lg); background: var(--copper); z-index: 1; }
+  .visit-content h2 { font-size: var(--t-2xl); margin: 8px 0 4px; }
+  .visit-item { margin-top: 22px; }
+  .visit-item + .visit-item { margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--line); }
+  .visit-item h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.3rem; margin-bottom: 8px; }
+  .visit-item p { color: var(--text-soft); font-size: var(--t-sm); }
+  .visit-item .btn { margin-top: 16px; }
 
-  /* ---------- CTA ---------- */
-  .cta { position: relative; padding: clamp(72px, 10vw, 120px) 0; margin-top: clamp(56px,8vw,96px);
-    background-color: var(--ink-950);
-    background-image:
-      radial-gradient(70% 120% at 50% 0%, rgba(200,136,88,.20), transparent 55%),
-      linear-gradient(180deg, rgba(4,22,31,.82) 0%, rgba(4,22,31,.72) 50%, rgba(6,30,43,.92) 100%),
-      url('assets/images/svc-cta-bg.jpg');
-    background-size: cover, cover, cover;
-    background-position: center, center, center 58%;
-    background-repeat: no-repeat;
-    border-top: 1px solid var(--line); text-align: center; }
-  .cta .wrap { position: relative; z-index: 1; }
+
+  /* CTA */
+  .cta { position: relative; padding: clamp(92px, 12vw, 152px) 0; background: linear-gradient(rgba(4,22,31,.82), rgba(4,22,31,.80)), url('assets/images/wellness-cta-bg.jpg') center 55%/cover no-repeat; text-align: center; }
   .cta h2 { font-size: var(--t-2xl); margin-bottom: 14px; }
   .cta p { color: var(--text-soft); max-width: 540px; margin: 0 auto 30px; }
   .cta .btn { padding: 15px 34px; font-size: var(--t-base); }
 
-  /* ---------- Footer ---------- */
+  /* Footer */
   footer { background: var(--ink-950); padding: 64px 0 36px; border-top: 1px solid var(--line); }
   .fgrid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 40px; }
   .fbrand { display: flex; gap: 14px; align-items: flex-start; }
@@ -121,21 +122,37 @@
   .fbar { margin-top: 48px; padding-top: 22px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; font-size: var(--t-xs); color: var(--text-mute); }
   .fbar a { color: var(--text-soft); }
 
-  /* ---------- Reveal ---------- */
   .reveal { opacity: 0; transform: translateY(34px); filter: blur(6px); transition: opacity .8s cubic-bezier(.16,.84,.3,1), transform .9s cubic-bezier(.16,.84,.3,1), filter .8s ease; }
   .reveal.in { opacity: 1; transform: none; filter: blur(0); }
 
-  /* ---------- Responsive ---------- */
-  @media (max-width: 860px) {
+  @media (max-width: 880px) {
+    .split { grid-template-columns: 1fr; gap: 30px; }
+    .split-media { order: -1; }
+    .visit-top { grid-template-columns: 1fr; gap: 28px; }
+    .visit-media .media-frame img { aspect-ratio: 16/10; }
     .menu { position: fixed; inset: 0 0 0 auto; width: min(78vw, 320px); flex-direction: column; align-items: flex-start; justify-content: center; gap: 26px; padding: 40px; background: var(--ink-850); transform: translateX(100%); transition: transform .4s ease; box-shadow: -20px 0 60px rgba(0,0,0,.5); }
     .menu.open { transform: none; }
     .menu .btn { margin-top: 8px; }
     .burger { display: flex; }
     .fgrid { grid-template-columns: 1fr; gap: 32px; }
-    .hero { padding: 150px 0 70px; }
+    .hero { min-height: 60vh; padding: 140px 0 70px; }
   }
-  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; filter: none; transition: none; } html { scroll-behavior: auto; } .hero-video { display: none; } }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; filter: none; transition: none; } html { scroll-behavior: auto; } .hero-video { display: none; } .hero { background: var(--ink-900) url('assets/video/wellness-hero-poster.jpg') center/cover no-repeat; } }
+
+  /* ===== 2026 motion + micro-interactions ===== */
+  /* animated nav underline */
+  .menu a:not(.btn) { position: relative; }
+  .menu a:not(.btn)::after { content: ""; position: absolute; left: 0; right: 100%; bottom: -7px; height: 2px; background: var(--copper); transition: right .35s cubic-bezier(.16,.84,.3,1); }
+  .menu a:not(.btn):hover::after, .menu a:not(.btn).active::after { right: 0; }
   .btn { will-change: transform; }
+
+  /* scroll-linked image parallax (native, progressive enhancement) */
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      .media-frame img { animation: mediaRise linear both; animation-timeline: view(); animation-range: entry 0% exit 100%; }
+      @keyframes mediaRise { from { transform: scale(1.16) translateY(-3.4%); } to { transform: scale(1.16) translateY(3.4%); } }
+    }
+  }
   /* ===== Nav: Resources dropdown + phone ===== */
   .menu { gap: 24px; }
   .has-sub { position: relative; display: flex; align-items: center; }
@@ -233,7 +250,7 @@
       <div class="has-sub">
         <a href="services.html" class="sub-toggle active">Services <svg class="caret" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></a>
         <div class="submenu">
-          <a href="wellness-preventive-care.html">Wellness &amp; Preventive Care</a>
+          <a href="wellness-preventive-care.html" class="active">Wellness &amp; Preventive Care</a>
           <a href="dental-care.html">Dental Care</a>
         </div>
       </div>
@@ -254,179 +271,95 @@
 
 <!-- ===== Hero ===== -->
 <section class="hero">
-  <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="assets/video/services-hero-poster.jpg" aria-hidden="true">
-    <source src="assets/video/services-hero.mp4" type="video/mp4">
+  <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="assets/video/wellness-hero-poster.jpg" aria-hidden="true">
+    <source src="assets/video/wellness-hero.mp4" type="video/mp4">
   </video>
   <div class="hero-overlay"></div>
-  <div class="wrap hero-inner">
-    <span class="eyebrow reveal">Our Services · Jackson, Georgia</span>
-    <h1 class="display reveal">Comprehensive care, <span class="accent">close to home.</span></h1>
-    <p class="lede reveal">From a puppy's first visit to a senior pet's golden years, Jackson Veterinary Clinic offers the full range of care the pets of Butts County deserve — backed by four decades of hometown trust and the latest in veterinary medicine.</p>
+  <div class="wrap">
+    <span class="eyebrow reveal">Wellness &amp; Preventive Care · Jackson, GA</span>
+    <h1 class="display reveal">A lifetime of <span class="accent">healthy years.</span></h1>
+    <p class="lede reveal">The best way to keep your pet well is to stay ahead of trouble — regular checkups that catch the small things before they become big ones.</p>
+    <a class="btn reveal" role="button" aria-disabled="true" onclick="return false">Request an Appointment</a>
   </div>
 </section>
 
-<!-- ===== Band 1: Wellness & Prevention ===== -->
-<section class="band wrap">
-  <div class="band-head reveal">
-    <span class="eyebrow">Everyday & Preventive</span>
-    <h2 class="display">Keeping your pet healthy.</h2>
-    <p>The foundation of a long, happy life — routine care that catches small things before they become big ones.</p>
-  </div>
-  <div class="svc-grid">
-
-    <article class="svc-card linkcard reveal" data-href="wellness-preventive-care.html">
-      <div class="svc-thumb"><img src="assets/images/svc-wellness.jpg" alt="A dog and cat resting together at home" loading="lazy"></div>
-      <div class="svc-body">
-        <h3>Wellness &amp; Preventive Care</h3>
-        <p>Regular checkups establish a baseline for your pet's health and help us catch problems before they become serious.</p>
-        <div class="subs">Wellness exams · Vaccinations · Parasite prevention · Nutritional counseling · Microchipping</div>
-        <a class="more" href="wellness-preventive-care.html">Learn more <span class="arr">→</span></a>
-      </div>
-    </article>
-
-    <article class="svc-card linkcard reveal" data-href="puppy-kitten-care.html">
-      <div class="svc-thumb"><img src="assets/images/svc-puppy-kitten.jpg" alt="A puppy and a kitten lounging together in the sun" loading="lazy"></div>
-      <div class="svc-body">
-        <h3>Puppy &amp; Kitten Care</h3>
-        <p>A nose-to-tail start for your newest family member — vaccinations, nutrition, socialization, and all the guidance you need.</p>
-        <div class="subs">First exams · Vaccine series · New-owner guidance</div>
-        <a class="more" href="puppy-kitten-care.html">Learn more <span class="arr">→</span></a>
-      </div>
-    </article>
-
-    <article class="svc-card linkcard reveal" data-href="senior-care.html">
-      <div class="svc-thumb"><img src="assets/images/svc-senior.jpg" alt="A fluffy cat resting comfortably on a soft bed" loading="lazy"></div>
-      <div class="svc-body">
-        <h3>Senior Care</h3>
-        <p>As pets age, annual exams and bloodwork become even more critical. We help your companion thrive in their golden years.</p>
-        <div class="subs">Geriatric exams · Bloodwork panels · Organ &amp; thyroid screening</div>
-        <a class="more" href="senior-care.html">Learn more <span class="arr">→</span></a>
-      </div>
-    </article>
-
+<!-- ===== Overview (split) ===== -->
+<section class="section wrap">
+  <div class="split">
+    <div class="split-text reveal">
+      <span class="eyebrow sec-eyebrow">Why it matters</span>
+      <h2 class="display">Care that looks ahead.</h2>
+      <p>At Jackson Veterinary Clinic in Jackson, GA, we believe that regular checkups and <strong>wellness exams</strong> are critical to your pets' well-being. These wellness exams give us a chance to evaluate the overall health of your pet while also giving us a baseline for their unique bodies and tendencies.</p>
+      <p>Not only do these exams keep us up-to-date with your pets' health, but they also allow us to detect potential problems before they become serious. This thorough checkup gives us vital information to help keep your pet healthy!</p>
+    </div>
+    <div class="split-media reveal">
+      <div class="media-frame"><img src="assets/images/wellness-overview.jpg" alt="A relaxed, healthy dog resting comfortably at home — wellness and preventive care at Jackson Veterinary Clinic in Jackson, GA"></div>
+      <span class="badge"><span class="b-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></span><span>Well from<br>nose to tail</span></span>
+    </div>
   </div>
 </section>
 
-<!-- ===== Band 2: Surgery & Dentistry ===== -->
-<section class="band wrap">
-  <div class="band-head reveal">
-    <span class="eyebrow">Surgery &amp; Dentistry</span>
-    <h2 class="display">When your pet needs more.</h2>
-    <p>Dr. Alan's surgical experience and a fully equipped facility — close to home, so you're never far from your pet.</p>
-  </div>
-  <div class="svc-grid">
-
-    <article class="svc-card linkcard reveal" data-href="surgery.html">
-      <div class="svc-thumb"><img src="assets/images/svc-surgery.jpg" alt="Sterile surgical instruments laid out and ready for a procedure" loading="lazy"></div>
-      <div class="svc-body">
-        <h3>Surgery</h3>
-        <p>From routine spays and neuters to orthopedic procedures, our team provides skilled surgical care with comprehensive pre- and post-op support.</p>
-        <div class="subs">Spay &amp; neuter · Orthopedic · C-sections · Mass removal · Amputation</div>
-        <a class="more" href="surgery.html">Learn more <span class="arr">→</span></a>
-      </div>
-    </article>
-
-    <article class="svc-card linkcard reveal" data-href="dental-care.html">
-      <div class="svc-thumb"><img src="assets/images/dental-dog.jpg" alt="A healthy, smiling dog" loading="lazy"></div>
-      <div class="svc-body">
-        <h3>Dental Care</h3>
-        <p>Dental scaling removes tartar before bacteria can reach the heart, liver, and kidneys. Every pet goes home with their own dental kit.</p>
-        <div class="subs">Cleaning &amp; scaling · Extractions · Oral exams · Home care</div>
-        <a class="more" href="dental-care.html">Learn more <span class="arr">→</span></a>
-      </div>
-    </article>
-
+<!-- ===== Quote moment ===== -->
+<section class="section wrap quote-band">
+  <div class="qb-inner reveal">
+    <span class="mark" aria-hidden="true">&ldquo;</span>
+    <p class="q display">We believe the best way to promote overall health is through preventative care.<span class="accent">(regular checkups, real peace of mind)</span></p>
+    <p class="sub">Regular checkups allow us to establish a baseline in your pets' health and make us aware of any changes that may indicate future problems.</p>
   </div>
 </section>
 
-<!-- ===== Band 3: Diagnostics & Advanced Care ===== -->
-<section class="band wrap">
-  <div class="band-head reveal">
-    <span class="eyebrow">Diagnostics &amp; Advanced Care</span>
-    <h2 class="display">Answers, faster.</h2>
-    <p>On-site technology means we can diagnose and start treatment sooner — without sending your pet's results across the state.</p>
-  </div>
-  <div class="svc-grid">
-
-    <article class="svc-card linkcard reveal" data-href="diagnostics-imaging.html">
-      <div class="svc-thumb"><img src="assets/images/svc-diagnostics.jpg" alt="A tabby cat gazing intently with striking eyes" loading="lazy"></div>
-      <div class="svc-body">
-        <h3>Diagnostics &amp; Imaging</h3>
-        <p>Digital X-rays, ultrasound, and a full in-house laboratory let us look inside the body and deliver results in minutes, not days.</p>
-        <div class="subs">Digital X-rays · Ultrasound · In-house lab · Onsite diagnostics</div>
-        <a class="more" href="diagnostics-imaging.html">Learn more <span class="arr">→</span></a>
+<!-- ===== What we provide (feature grid) ===== -->
+<section class="feat-wrap">
+  <div class="section wrap">
+    <div class="feat-head reveal">
+      <span class="eyebrow sec-eyebrow">What we provide</span>
+      <h2 class="display">Everything your pet needs to stay well.</h2>
+      <p>Routine care that keeps the small things small — all under one roof, right here in Jackson.</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+        <h3>Wellness Exams</h3>
+        <p>A thorough nose-to-tail checkup that evaluates overall health and sets a baseline.</p>
       </div>
-    </article>
-
-    <article class="svc-card linkcard reveal" data-href="echocardiography.html">
-      <div class="svc-thumb"><span class="tag">New</span><img src="assets/images/svc-echo.jpg" alt="A peaceful cat resting in warm light" loading="lazy"></div>
-      <div class="svc-body">
-        <h3>Echocardiography</h3>
-        <p>Advanced cardiac ultrasound to evaluate heart function and detect disease early — now available right here in Jackson.</p>
-        <div class="subs">Cardiac ultrasound · Heart screening · Murmur work-ups</div>
-        <a class="more" href="echocardiography.html">Learn more <span class="arr">→</span></a>
+      <div class="feat reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="m18 2 4 4"/><path d="m17 7 3-3"/><path d="M19 9 8.7 19.3c-1 1-2.5 1-3.4 0l-.6-.6c-1-1-1-2.5 0-3.4L15 5"/><path d="m9 11 4 4"/><path d="m5 19-3 3"/><path d="m14 4 6 6"/></svg></div>
+        <h3>Vaccinations</h3>
+        <p>Protection against the diseases of our region, tailored to your pet's age and lifestyle.</p>
       </div>
-    </article>
-
-    <article class="svc-card linkcard reveal" data-href="laser-therapy-pain.html">
-      <div class="svc-thumb"><img src="assets/images/svc-laser.jpg" alt="A dog lying comfortably and relaxed on a blanket" loading="lazy"></div>
-      <div class="svc-body">
-        <h3>Laser Therapy &amp; Pain Management</h3>
-        <p>Cold laser therapy speeds healing and eases chronic pain, part of our commitment to keeping every patient comfortable.</p>
-        <div class="subs">Cold laser therapy · Post-op recovery · Chronic pain relief</div>
-        <a class="more" href="laser-therapy-pain.html">Learn more <span class="arr">→</span></a>
+      <div class="feat reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div>
+        <h3>Parasite Prevention</h3>
+        <p>Flea, tick, and heartworm prevention that heads off serious problems before they start.</p>
       </div>
-    </article>
-
-    <article class="svc-card linkcard reveal" data-href="dermatology.html">
-      <div class="svc-thumb"><img src="assets/images/svc-derm.jpg" alt="A cat scratching under its chin outdoors" loading="lazy"></div>
-      <div class="svc-body">
-        <h3>Dermatology</h3>
-        <p>Skin is the body's largest organ. We diagnose and treat allergies, infections, parasites, and more with targeted testing.</p>
-        <div class="subs">Allergy &amp; fungal testing · Cultures · Biopsies</div>
-        <a class="more" href="dermatology.html">Learn more <span class="arr">→</span></a>
+      <div class="feat reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></svg></div>
+        <h3>Nutritional Counseling</h3>
+        <p>Diet and weight guidance for every life stage — puppy, adult, and senior.</p>
       </div>
-    </article>
-
+    </div>
   </div>
 </section>
 
-<!-- ===== Band 4: When You Need Us Most ===== -->
-<section class="band wrap">
-  <div class="band-head reveal">
-    <span class="eyebrow">When You Need Us Most</span>
-    <h2 class="display">Here for the hard moments.</h2>
-    <p>Whether it's a sudden scare or a final goodbye, you and your pet won't face it alone.</p>
-  </div>
-  <div class="svc-grid">
-
-    <article class="svc-card linkcard reveal" data-href="emergency-urgent-care.html">
-      <div class="svc-thumb"><img src="assets/images/svc-emergency.jpg" alt="A close-up of an alert dog with a focused gaze" loading="lazy"></div>
-      <div class="svc-body">
-        <h3>Emergency &amp; Urgent Care</h3>
-        <p>Emergencies are stressful. During clinic hours, call us right away and we'll do everything we can to help you and your pet.</p>
-        <div class="subs">Same-day urgent visits · Call (770) 775-5710</div>
-        <a class="more" href="emergency-urgent-care.html">Learn more <span class="arr">→</span></a>
+<!-- ===== Planning the visit (cat photo + content) ===== -->
+<section class="section wrap">
+  <div class="visit-top">
+    <div class="visit-media reveal">
+      <div class="media-frame"><img src="assets/images/wellness-cat.jpg" alt="A woman gently petting her cat by a sunny window — preventive care at Jackson Veterinary Clinic in Jackson, GA"></div>
+    </div>
+    <div class="visit-content reveal">
+      <span class="eyebrow sec-eyebrow">A little extra peace of mind</span>
+      <h2 class="display">Beyond the yearly checkup.</h2>
+      <div class="visit-item">
+        <h3>Microchipping</h3>
+        <p>Every year, thousands and thousands of pets go missing. Microchipping is a simple, safe, and effective way to ensure your pet's safety and retrieval should he or she ever become lost. It is a standard procedure that implants a tiny chip underneath your pet's fur — painless, relatively fast, and completely safe.</p>
       </div>
-    </article>
-
-    <article class="svc-card linkcard reveal" data-href="end-of-life-care.html">
-      <div class="svc-thumb"><img src="assets/images/svc-eol.jpg" alt="An orange cat resting peacefully by a window" loading="lazy"></div>
-      <div class="svc-body">
-        <h3>End-of-Life Care</h3>
-        <p>We're here for you and your pet, even at the end — with compassion, patience, and respect for one of life's hardest decisions.</p>
-        <div class="subs">Compassionate euthanasia · Quality-of-life guidance</div>
-        <a class="more" href="end-of-life-care.html">Learn more <span class="arr">→</span></a>
+      <div class="visit-item">
+        <h3>How often should we visit?</h3>
+        <p>We highly recommend bringing your pet in for regular exams. Often health problems that go undetected can become more severe issues when left untreated, so checkups are important even when your pet appears healthy.</p>
+        <a href="#" class="btn btn-ghost">New Client Form</a>
       </div>
-    </article>
-
-  </div>
-
-  <div class="alsorow reveal">
-    <span><i class="dotc"></i> Also available:</span>
-    <a href="https://jacksonveterinaryclinic.ourvet.com" target="_blank" rel="noopener">Online Pharmacy</a>
-    <span><i class="dotc"></i> Fully stocked in-house pharmacy</span>
-    <span><i class="dotc"></i> Nutritional counseling</span>
+    </div>
   </div>
 </section>
 
@@ -434,8 +367,8 @@
 <section class="cta" id="request">
   <div class="wrap">
     <span class="eyebrow">New patient or returning friend</span>
-    <h2 class="display">Not sure what your pet needs?</h2>
-    <p>Send a request and a real person from our team will reach out to find a time that works — and help point you to the right care.</p>
+    <h2 class="display">Due for a wellness visit?</h2>
+    <p>We don't do anonymous online booking — just send a request and a real person from our team will reach out to find a time that works.</p>
     <a class="btn" role="button" aria-disabled="true" onclick="return false">Request an Appointment</a>
   </div>
 </section>
@@ -480,54 +413,26 @@
   const hdr = document.getElementById('hdr');
   const onScroll = () => hdr.classList.toggle('scrolled', window.scrollY > 30);
   onScroll(); window.addEventListener('scroll', onScroll, { passive: true });
-
   const burger = document.getElementById('burger');
   const menu = document.getElementById('menu');
   const toggleMenu = () => menu.classList.toggle('open');
   burger.addEventListener('click', toggleMenu);
   burger.addEventListener('keypress', e => { if (e.key === 'Enter') toggleMenu(); });
   menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
-
-  // whole card clickable
-  document.querySelectorAll('.svc-card.linkcard').forEach(card => {
-    const href = card.dataset.href; if (!href) return;
-    card.addEventListener('click', e => { if (e.target.closest('a')) return; window.location.href = href; });
-  });
-
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach((el, i) => { el.style.transitionDelay = (Math.min(i % 4, 3) * 0.06) + 's'; io.observe(el); });
+  const io = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach((el, i) => { el.style.transitionDelay = (Math.min(i % 3, 2) * 0.06) + 's'; io.observe(el); });
 </script>
 
 <!-- ===== SEO: structured data ===== -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "VeterinaryCare",
-  "name": "Jackson Veterinary Clinic",
-  "url": "https://jacksonveterinaryclinic.net/services/",
-  "telephone": "+1-770-775-5710",
-  "address": { "@type": "PostalAddress", "streetAddress": "369 East 2nd Street", "addressLocality": "Jackson", "addressRegion": "GA", "postalCode": "30233", "addressCountry": "US" },
+  "@type": "Service",
+  "serviceType": "Veterinary Wellness & Preventive Care",
+  "name": "Wellness & Preventive Care",
+  "provider": { "@type": "VeterinaryCare", "name": "Jackson Veterinary Clinic", "telephone": "+1-770-775-5710", "address": { "@type": "PostalAddress", "streetAddress": "369 East 2nd Street", "addressLocality": "Jackson", "addressRegion": "GA", "postalCode": "30233", "addressCountry": "US" } },
   "areaServed": "Butts County, Georgia",
-  "foundingDate": "1981",
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "name": "Veterinary Services",
-    "itemListElement": [
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Wellness & Preventive Care" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Puppy & Kitten Care" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Senior Care" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Surgery" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Dental Care" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Diagnostics & Imaging" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Echocardiography" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Laser Therapy & Pain Management" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Dermatology" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Emergency & Urgent Care" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "End-of-Life Care" } }
-    ]
-  }
+  "description": "Dog and cat wellness and preventive care in Jackson, GA — wellness exams, vaccinations, parasite prevention, nutritional counseling, and microchipping."
 }
 </script>
 <!-- ===== 2026 motion + micro-interactions ===== -->
@@ -536,6 +441,8 @@
 (function(){
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  /* --- Smooth (inertia) scrolling --- */
   let lenis = null;
   if (!reduce && window.Lenis) {
     lenis = new Lenis({ lerp: 0.1, smoothWheel: true });
@@ -547,9 +454,9 @@
         if (id.length > 1) { const el = document.querySelector(id); if (el) { e.preventDefault(); lenis.scrollTo(el, { offset: -80 }); } }
       });
     });
-    const modal = document.getElementById('modal');
-    if (modal) { new MutationObserver(() => { modal.classList.contains('open') ? lenis.stop() : lenis.start(); }).observe(modal, { attributes: true, attributeFilter: ['class'] }); }
   }
+
+  /* --- Hero parallax: video scales, copy drifts + fades --- */
   if (!reduce) {
     const hero = document.querySelector('.hero');
     const vid = document.querySelector('.hero-video');
@@ -565,11 +472,15 @@
     if (lenis) lenis.on('scroll', (e) => apply(e.scroll)); else window.addEventListener('scroll', () => apply(), { passive: true });
     apply(0);
   }
+
+  /* --- Magnetic buttons --- */
   if (!reduce && fine) {
     document.querySelectorAll('.btn').forEach(btn => {
       btn.addEventListener('mousemove', (e) => {
         const r = btn.getBoundingClientRect();
-        btn.style.transform = 'translate(' + ((e.clientX-(r.left+r.width/2))*0.25) + 'px,' + ((e.clientY-(r.top+r.height/2))*0.4) + 'px)';
+        const mx = e.clientX - (r.left + r.width / 2);
+        const my = e.clientY - (r.top + r.height / 2);
+        btn.style.transform = 'translate(' + (mx * 0.25) + 'px,' + (my * 0.4) + 'px)';
       });
       btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
     });
