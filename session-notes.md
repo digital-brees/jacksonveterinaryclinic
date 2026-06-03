@@ -213,10 +213,12 @@ All color lives in `assets/css/tokens.css`, extracted from the 1981 logo. team.h
 
 ## Session Log
 
-### 2026-06-03 — Vercel preview: temp root redirect (Brees)
-- **Issue:** Vercel link showed a blank page — root `/` serves `index.html`, which was still the empty placeholder stub (homepage not built, awaiting Alie's copy).
-- **Fix:** `index.html` now redirects (`meta refresh` + `window.location.replace` + canonical) to `/services.html` so the preview link lands on a real page. Graceful no-JS fallback link included; `noindex` retained. **Replace this whole file with the real homepage when copy arrives.**
-- Built pages are also directly reachable: `/services.html`, `/team.html`, `/dental-care.html`, `/wellness-preventive-care.html`.
+### 2026-06-03 — Vercel preview: Team is the temp index (Brees)
+- **Issue:** Vercel link showed a blank page — root `/` serves `index.html`, which was the empty placeholder stub (real homepage not built, awaiting Alie's copy).
+- **Fix:** **`index.html` is now a copy of `team.html`** (Team page serves at the root) per Brees. First tried a redirect → /services.html, then switched to Team-as-index. `noindex` retained.
+  - ⚠️ **Duplication:** `index.html` and `team.html` are now identical. Edits to the team page must be mirrored to `index.html` (or re-copy) until the real homepage replaces `index.html`.
+- **Deploy mechanism = Git push** (repo is GitHub-connected to Vercel — the stub deployed on push, proving auto-deploy). NOT CLI-linked locally (no `.vercel/`); do not `vercel` from the folder or it'll spawn a separate project.
+- Built pages also directly reachable: `/services.html`, `/team.html`, `/dental-care.html`, `/wellness-preventive-care.html`.
 
 ### 2026-06-03 — Wellness spoke built + nav/footer demo-gating (Brees)
 - **Built `wellness-preventive-care.html`** — 2nd spoke on the dental mold. Sections: hero ("A lifetime of healthy years.") → overview ("Care that looks ahead." — verbatim Wellness Exams copy) → quote moment (verbatim Preventative Care line) → beige feature band (Wellness Exams · Vaccinations · Parasite Prevention · Nutritional Counseling, distinct icons) → lower section (Microchipping + "how often to visit", verbatim) → CTA. Updated title/meta/Service JSON-LD. Hub "Learn more" already pointed here.
