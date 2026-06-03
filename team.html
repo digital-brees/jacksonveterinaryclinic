@@ -35,12 +35,12 @@
   header {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     transition: background .4s ease, box-shadow .4s ease, padding .4s ease;
-    padding: 18px 0;
+    padding: 0 0 18px;
   }
   header.scrolled {
     background: var(--ink-900);
-    box-shadow: 0 1px 0 var(--line);
-    padding: 10px 0;
+    box-shadow: 0 16px 36px -18px rgba(0,0,0,.6), 0 1px 0 var(--line-strong);
+    padding: 0 0 10px;
   }
   .nav { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
   .brand { display: flex; align-items: center; gap: 14px; }
@@ -102,11 +102,12 @@
   }
   .dcard {
     display: flex; flex-direction: column; overflow: hidden;
-    background: linear-gradient(180deg, var(--ink-850), var(--ink-900));
-    border: 1px solid var(--line); border-radius: var(--r-lg);
+    background: var(--ink-800);
+    border: 1px solid var(--line-strong); border-radius: var(--r-lg);
+    box-shadow: 0 24px 50px -30px rgba(0,0,0,.75);
     transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease;
   }
-  .dcard:hover { transform: translateY(-5px); border-color: var(--line-strong); box-shadow: 0 30px 60px -30px rgba(0,0,0,.7); }
+  .dcard:hover { transform: translateY(-5px); border-color: var(--copper); box-shadow: 0 36px 66px -28px rgba(0,0,0,.8); }
   .dcard-photo { position: relative; aspect-ratio: 4/5; overflow: hidden; background: var(--ink-800); }
   .dcard-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; z-index: 1; }
   .dcard-photo .mono { position: absolute; inset: 0; font-size: 6.5rem; }
@@ -134,11 +135,12 @@
     gap: 28px; justify-content: center;
   }
   .card {
-    background: linear-gradient(180deg, var(--ink-850), var(--ink-900));
-    border: 1px solid var(--line); border-radius: var(--r-lg); overflow: hidden;
+    background: var(--ink-800);
+    border: 1px solid var(--line-strong); border-radius: var(--r-lg); overflow: hidden;
+    box-shadow: 0 24px 50px -30px rgba(0,0,0,.75);
     transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease;
   }
-  .card:hover { transform: translateY(-6px); border-color: var(--line-strong); box-shadow: 0 30px 60px -30px rgba(0,0,0,.7); }
+  .card:hover { transform: translateY(-6px); border-color: var(--copper); box-shadow: 0 36px 66px -28px rgba(0,0,0,.8); }
   .card-photo { aspect-ratio: 1/1; position: relative; overflow: hidden; }
   .card-photo img { width: 100%; height: 100%; object-fit: cover; }
   /* monogram placeholder */
@@ -271,13 +273,56 @@
   .fsocial a:hover { color: var(--ink-900); background: var(--copper); border-color: var(--copper); transform: translateY(-2px); }
   /* nav CTA button keeps navy text (overrides .menu a sand color) */
   .menu a.btn { color: var(--ink-900); }
-  @media (max-width: 860px) { .nav-social { margin-top: 6px; } }
+  /* ===== Utility bar (two-tier header) — finished ===== */
+  .utilbar { background: rgba(10,30,46,.55); border-bottom: 1px solid rgba(200,140,95,.30); transition: background .4s ease; }
+  header.scrolled .utilbar { background: var(--ink-950); }
+  .util-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 8px 0; }
+  .nav { padding-top: 18px; }
+  header.scrolled .nav { padding-top: 12px; }
+  .menu { gap: 30px; }
+  .util-left, .util-right { display: flex; align-items: center; gap: 14px; }
+  .util-phone { display: inline-flex; align-items: center; gap: 7px; font-size: var(--t-xs); font-weight: 600; letter-spacing: .02em; color: var(--text-soft); }
+  .util-phone svg { width: 13px; height: 13px; stroke: var(--copper); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .util-phone:hover { color: var(--copper-bright); }
+  .util-divider { width: 1px; height: 13px; background: rgba(192,184,168,.26); display: inline-block; flex: none; }
+  .util-hours { font-size: var(--t-xs); letter-spacing: .04em; color: var(--text-mute); }
+  .util-store { font-size: var(--t-xs); font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--text-soft); }
+  .util-store:hover { color: var(--copper-bright); }
+  .utilbar .nav-social { gap: 4px; }
+  .utilbar .nav-social a { width: 28px; height: 28px; }
+  .utilbar .nav-social a svg { width: 16px; height: 16px; }
+  /* CTA button finish: arrow + soft shadow */
+  .menu a.btn { color: var(--ink-900); display: inline-flex; align-items: center; gap: 7px; box-shadow: 0 12px 24px -12px rgba(0,0,0,.55); }
+  .menu a.btn .btn-arrow { font-size: 1.02em; line-height: 1; transition: transform .3s cubic-bezier(.16,.84,.3,1); }
+  .menu a.btn:hover .btn-arrow { transform: translateX(3px); }
+  .m-only { display: none; }
+  @media (max-width: 860px) {
+    .util-hours, .util-divider, .util-store { display: none; }
+    .m-only { display: block; }
+  }
 </style>
 </head>
 <body>
 
 <!-- ===== Header ===== -->
 <header id="hdr">
+  <div class="utilbar">
+    <div class="wrap util-inner">
+      <div class="util-left">
+        <a href="tel:7707755710" class="util-phone"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>770-775-5710</a>
+        <span class="util-divider" aria-hidden="true"></span>
+        <span class="util-hours">Mon–Fri · 8am – 6pm</span>
+      </div>
+      <div class="util-right">
+        <a class="util-store" href="https://jacksonveterinaryclinic.ourvet.com" target="_blank" rel="noopener">Online Store</a>
+        <span class="util-divider" aria-hidden="true"></span>
+        <div class="nav-social">
+          <a href="https://www.facebook.com/JVCGeorgia" target="_blank" rel="noopener" aria-label="Jackson Veterinary Clinic on Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07c0 6.02 4.39 11.01 10.13 11.93v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.69.24 2.69.24v2.97h-1.52c-1.49 0-1.96.93-1.96 1.89v2.25h3.33l-.53 3.49h-2.8v8.44C19.61 23.08 24 18.09 24 12.07z"/></svg></a>
+          <a href="https://www.instagram.com/jacksonvetclinic/" target="_blank" rel="noopener" aria-label="Jackson Veterinary Clinic on Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zm0 1.44c-3.14 0-3.51.01-4.75.07-1.15.05-1.77.24-2.18.41-.55.21-.94.47-1.35.88-.41.41-.67.8-.88 1.35-.17.41-.36 1.03-.41 2.18-.06 1.24-.07 1.61-.07 4.75s.01 3.51.07 4.75c.05 1.15.24 1.77.41 2.18.21.55.47.94.88 1.35.41.41.8.67 1.35.88.41.17 1.03.36 2.18.41 1.24.06 1.61.07 4.75.07s3.51-.01 4.75-.07c1.15-.05 1.77-.24 2.18-.41.55-.21.94-.47 1.35-.88.41-.41.67-.8.88-1.35.17-.41.36-1.03.41-2.18.06-1.24.07-1.61.07-4.75s-.01-3.51-.07-4.75c-.05-1.15-.24-1.77-.41-2.18a3.6 3.6 0 0 0-.88-1.35 3.6 3.6 0 0 0-1.35-.88c-.41-.17-1.03-.36-2.18-.41-1.24-.06-1.61-.07-4.75-.07zm0 2.45a5.95 5.95 0 1 0 0 11.9 5.95 5.95 0 0 0 0-11.9zm0 9.82a3.87 3.87 0 1 1 0-7.74 3.87 3.87 0 0 1 0 7.74zm7.58-10.06a1.39 1.39 0 1 1-2.78 0 1.39 1.39 0 0 1 2.78 0z"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="wrap nav">
     <a class="brand" href="index.html" aria-label="Jackson Veterinary Clinic — Est. 1981, Jackson GA">
       <img src="assets/logo/logo-badge.png" alt="Jackson Veterinary Clinic">
@@ -293,14 +338,9 @@
           <a href="#">FAQs</a>
         </div>
       </div>
-      <a href="https://jacksonveterinaryclinic.ourvet.com" target="_blank" rel="noopener">Online Store</a>
       <a href="#">Contact</a>
-      <a href="tel:7707755710" class="nav-phone"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>770-775-5710</a>
-      <div class="nav-social">
-        <a href="https://www.facebook.com/JVCGeorgia" target="_blank" rel="noopener" aria-label="Jackson Veterinary Clinic on Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07c0 6.02 4.39 11.01 10.13 11.93v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.69.24 2.69.24v2.97h-1.52c-1.49 0-1.96.93-1.96 1.89v2.25h3.33l-.53 3.49h-2.8v8.44C19.61 23.08 24 18.09 24 12.07z"/></svg></a>
-        <a href="https://www.instagram.com/jacksonvetclinic/" target="_blank" rel="noopener" aria-label="Jackson Veterinary Clinic on Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zm0 1.44c-3.14 0-3.51.01-4.75.07-1.15.05-1.77.24-2.18.41-.55.21-.94.47-1.35.88-.41.41-.67.8-.88 1.35-.17.41-.36 1.03-.41 2.18-.06 1.24-.07 1.61-.07 4.75s.01 3.51.07 4.75c.05 1.15.24 1.77.41 2.18.21.55.47.94.88 1.35.41.41.8.67 1.35.88.41.17 1.03.36 2.18.41 1.24.06 1.61.07 4.75.07s3.51-.01 4.75-.07c1.15-.05 1.77-.24 2.18-.41.55-.21.94-.47 1.35-.88.41-.41.67-.8.88-1.35.17-.41.36-1.03.41-2.18.06-1.24.07-1.61.07-4.75s-.01-3.51-.07-4.75c-.05-1.15-.24-1.77-.41-2.18a3.6 3.6 0 0 0-.88-1.35 3.6 3.6 0 0 0-1.35-.88c-.41-.17-1.03-.36-2.18-.41-1.24-.06-1.61-.07-4.75-.07zm0 2.45a5.95 5.95 0 1 0 0 11.9 5.95 5.95 0 0 0 0-11.9zm0 9.82a3.87 3.87 0 1 1 0-7.74 3.87 3.87 0 0 1 0 7.74zm7.58-10.06a1.39 1.39 0 1 1-2.78 0 1.39 1.39 0 0 1 2.78 0z"/></svg></a>
-      </div>
-      <a href="#request" class="btn">Request Appointment</a>
+      <a class="m-only" href="https://jacksonveterinaryclinic.ourvet.com" target="_blank" rel="noopener">Online Store</a>
+      <a href="#request" class="btn">Request Appointment <span class="btn-arrow" aria-hidden="true">→</span></a>
     </nav>
     <div class="burger" id="burger" aria-label="Menu" role="button" tabindex="0"><span></span><span></span><span></span></div>
   </div>

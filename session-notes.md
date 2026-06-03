@@ -213,6 +213,22 @@ All color lives in `assets/css/tokens.css`, extracted from the 1981 logo. team.h
 
 ## Session Log
 
+### 2026-06-03 — Two-tier header + finish pass + card depth (Brees)
+- **Header rebuilt as a two-tier system** (all 3 pages) — the single overloaded row was too tight. Now: a **slim utility bar** (phone · hours on the left; Online Store + FB/IG on the right) above the **main nav** (logo + Home/Team/Services/Resources▾/Contact + Request Appointment). Online Store + phone + social all moved OUT of the main row into the utility bar.
+  - Mobile: utility bar keeps phone (left) + social (right); hours/dividers/store hidden; **Online Store added to the slide-in menu** via a `.m-only` link so no link is lost.
+- **Utility bar is sticky** — removed the collapse-on-scroll; since `header` is `position: fixed`, the bar now stays pinned at the top. (Earlier draft collapsed it on scroll — reverted per Brees.)
+- **Flush to top** — dropped the header's top padding (`18px → 0`, now `padding: 0 0 18px`; scrolled `0 0 10px`) so the utility bar sits flush against the viewport top. Logo breathing room preserved via `.nav { padding-top: 18px }` (12px scrolled).
+- **Full finish pass** (so it reads as a designed system, not floating text):
+  - Utility bar = defined strip: translucent `rgba(10,30,46,.55)` over the hero, solid `--ink-950` on scroll (distinct from the `--ink-900` nav tier).
+  - **Copper hairline** divider under the bar (`rgba(200,140,95,.30)`).
+  - Thin **vertical dividers** (`.util-divider`) between phone│hours and Store│social (replaced the old `·` dot).
+  - "ONLINE STORE" uppercase + letter-spacing; wider nav gap (30px).
+  - **CTA button finish:** soft drop shadow + an **arrow (→)** that nudges on hover; navy text retained.
+- **Depth / anti-blend fix** (Brees: "at certain points it all blends together"):
+  - Team cards (`.card`) + doctor cards (`.dcard`) were on a gradient that **faded into the page-base `--ink-900`** with a faint border → lower edges dissolved. Moved both onto the proper elevated **`--ink-800`** surface, added a **resting drop shadow**, and switched to `--line-strong` border (copper on hover).
+  - **Scrolled header** now casts a real drop shadow (`0 16px 36px -18px rgba(0,0,0,.6)` + hairline) instead of a 1px line, so content separates from it on scroll. (All 3 pages.)
+- **Still duplicated across 3 pages** (header markup + utility-bar CSS + finish + depth) — the shared `assets/css/site.css` extraction is now well overdue and is the recommended next step before building the remaining 9 service spokes.
+
 ### 2026-06-03 — Social icons + nav button fix + media refresh + dental badge (Brees)
 - **Social icons (Facebook + Instagram) added to header + footer on all 3 pages** (team / services / dental-care). Links: FB `https://www.facebook.com/JVCGeorgia`, IG `https://www.instagram.com/jacksonvetclinic/`. Header = bare circular icon links beside the phone/CTA (warm-white `--text`, 19px, subtle sand hover disc, copper-bright on hover, underline suppressed). Footer = bordered `.fsocial` circles under the brand blurb (sand icon → fills copper w/ navy glyph on hover). Both use solid glyphs (FB 'f', Simple-Icons IG).
 - **Instagram icon visibility fix:** header icons were `--text-soft` (sand) at 16px and the IG glyph read faint vs the FB 'f'. Bumped to `--text` (warm white) at 19px + hover disc — both now read clearly.
