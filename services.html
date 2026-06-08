@@ -80,7 +80,7 @@
   .svc-body { display: flex; flex-direction: column; flex: 1; padding: 24px 26px 26px; }
   .svc-card h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.5rem; margin: 0 0 10px; line-height: 1.1; }
   .svc-card p { color: var(--text-soft); font-size: var(--t-sm); margin-bottom: 16px; }
-  .svc-card .subs { font-size: var(--t-xs); color: var(--text-mute); letter-spacing: .02em; padding-top: 14px; margin-top: auto; border-top: 1px solid rgba(192,184,168,.18); }
+  .svc-card .subs { font-size: var(--t-xs); color: var(--text-soft); letter-spacing: .02em; padding-top: 14px; margin-top: auto; border-top: 1px solid rgba(192,184,168,.18); }
   .svc-card .more { display: inline-flex; align-items: center; gap: 8px; font-size: var(--t-sm); font-weight: 600; color: var(--text); margin-top: 16px; }
   .svc-card .more .arr { color: var(--copper); transition: transform .25s; }
   .svc-card:hover .more { color: var(--copper-bright); }
@@ -211,6 +211,7 @@
 </script>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to main content</a>
 
 <!-- ===== Header ===== -->
 <header id="hdr">
@@ -239,7 +240,7 @@
       <a class="soon" aria-disabled="true">Home</a>
       <a href="team.html">Team</a>
       <div class="has-sub">
-        <a href="services.html" class="sub-toggle active">Services <svg class="caret" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></a>
+        <a href="services.html" class="sub-toggle active" aria-haspopup="true">Services <svg class="caret" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></a>
         <div class="submenu">
           <a href="wellness-preventive-care.html">Wellness &amp; Preventive Care</a>
           <a href="dental-care.html">Dental Care</a>
@@ -256,9 +257,11 @@
       <a class="m-only" href="https://jacksonveterinaryclinic.ourvet.com" target="_blank" rel="noopener">Online Store</a>
       <a class="btn" role="button" aria-disabled="true" onclick="return false">Request Appointment <span class="btn-arrow" aria-hidden="true">→</span></a>
     </nav>
-    <div class="burger" id="burger" aria-label="Menu" role="button" tabindex="0"><span></span><span></span><span></span></div>
+    <button type="button" class="burger" id="burger" aria-label="Open menu" aria-controls="menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </header>
+
+<main id="main" tabindex="-1">
 
 <!-- ===== Hero ===== -->
 <section class="hero">
@@ -448,6 +451,8 @@
   </div>
 </section>
 
+</main>
+
 <!-- ===== Footer ===== -->
 <footer>
   <div class="wrap">
@@ -491,10 +496,13 @@
 
   const burger = document.getElementById('burger');
   const menu = document.getElementById('menu');
-  const toggleMenu = () => menu.classList.toggle('open');
-  burger.addEventListener('click', toggleMenu);
-  burger.addEventListener('keypress', e => { if (e.key === 'Enter') toggleMenu(); });
-  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
+  const setMenu = (open) => {
+    menu.classList.toggle('open', open);
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  };
+  burger.addEventListener('click', () => setMenu(!menu.classList.contains('open')));
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
 
   // whole card clickable
   document.querySelectorAll('.svc-card.linkcard').forEach(card => {
@@ -584,5 +592,6 @@
   }
 })();
 </script>
+<script src="assets/js/a11y.js"></script>
 </body>
 </html>

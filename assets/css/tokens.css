@@ -21,7 +21,8 @@
 
   /* --- Accent tints --- */
   --copper-bright: #D89B6B; /* hover / active accent */
-  --copper-deep:   #A86A3E; /* pressed / on-light accent */
+  --copper-deep:   #A86A3E; /* pressed / on-light accent (graphics only) */
+  --copper-on-sand:#5A3414; /* deep saddle — copper accent TEXT on the sand band (AA: ~5.5:1) */
 
   /* --- Text on dark --- */
   --text:      #F2EEE6;  /* warm off-white — primary copy */
@@ -59,3 +60,49 @@
   --font-accent:  'Barlow Semi Condensed', system-ui, sans-serif; /* pull-quotes, monograms */
   --font-sans:    'Public Sans', system-ui, sans-serif;
 }
+
+/* ============================================================
+   Accessibility — WCAG 2.1 AA (shared across every page)
+   ============================================================ */
+
+/* 2.4.7 / 2.4.11 — always-visible keyboard focus indicator.
+   Copper-bright on the dark navy = ~6:1 (well above the 3:1 minimum). */
+:focus-visible {
+  outline: 3px solid var(--copper-bright);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+/* Suppress the ring for pointer activation only (keyboard still shows it). */
+:focus:not(:focus-visible) { outline: none; }
+
+/* 2.4.1 — Skip to main content link (visible on focus). */
+.skip-link {
+  position: absolute; left: 12px; top: -120px; z-index: 1000;
+  background: var(--copper); color: var(--ink-900);
+  font-family: var(--font-sans); font-weight: 700; font-size: 0.95rem;
+  text-decoration: none; padding: 12px 20px; border-radius: 0 0 10px 10px;
+  box-shadow: 0 12px 30px -8px rgba(0,0,0,.6);
+  transition: top .2s ease;
+}
+.skip-link:focus { top: 0; }
+/* The <main> target receives focus after the skip — don't draw a box around the whole page. */
+main:focus { outline: none; }
+
+/* The burger is now a real <button>; strip the default button chrome. */
+.burger { background: none; border: 0; font: inherit; color: inherit; }
+
+/* 2.2.2 — Pause / Play control for the autoplaying hero video.
+   Injected by assets/js/a11y.js; hidden when the user prefers reduced motion. */
+.hero-pause {
+  position: absolute; z-index: 4;
+  right: clamp(16px, 4vw, 40px); bottom: clamp(16px, 4vw, 30px);
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: rgba(10,30,46,.62); border: 1px solid var(--line-strong);
+  color: var(--text); cursor: pointer;
+  -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+  transition: background .25s ease, color .25s ease, transform .25s ease;
+}
+.hero-pause:hover { background: var(--ink-850); color: var(--copper-bright); }
+.hero-pause svg { width: 18px; height: 18px; fill: currentColor; pointer-events: none; }
+@media (prefers-reduced-motion: reduce) { .hero-pause { display: none; } }

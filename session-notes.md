@@ -213,6 +213,27 @@ All color lives in `assets/css/tokens.css`, extracted from the 1981 logo. team.h
 
 ## Session Log
 
+### 2026-06-08 — WCAG 2.1 AA / ADA compliance pass (Brees)
+Full accessibility sweep across all 5 built pages (index, team, services, dental-care, wellness-preventive-care). `index.html` re-synced from `team.html` after edits (still a copy).
+
+**Shared (DRY — added once, used everywhere):**
+- `assets/css/tokens.css` — new block: always-visible `:focus-visible` ring (copper-bright, ~6:1), `.skip-link`, `.hero-pause` styles, `<button>.burger` reset, `main:focus{outline:none}`. New token `--copper-on-sand: #5A3414` (deep saddle) for copper TEXT on the beige band. `--copper-deep` kept for graphics/icon strokes only.
+- `assets/js/a11y.js` — NEW. Injects a keyboard-operable Pause/Play control into every autoplaying hero video (WCAG 2.2.2). Skipped entirely for `prefers-reduced-motion` users (they already get the poster still).
+
+**Per-page fixes:**
+- **2.4.1 Bypass Blocks** — "Skip to main content" link + `<main id="main" tabindex="-1">` landmark wrapping content on every page.
+- **4.1.2 Name/Role/Value** — hamburger converted from `<div role="button">` to a real `<button>` with `aria-controls="menu"` + `aria-expanded` toggling (and native Space/Enter). Services nav toggle got `aria-haspopup`.
+- **1.4.3 Contrast** — beige-band eyebrow 2.25:1 → 5.5:1 (new token, dental + wellness); services-card sub-services line 3.76:1 → 5.9:1 (`text-mute`→`text-soft`).
+- **2.2.2 Pause/Stop/Hide** — hero video pause button (via a11y.js).
+- **Team modal (2.4.3 / 4.1.2)** — focus moves to close button on open, Tab is trapped inside the dialog, focus returns to the trigger on close, `aria-labelledby="modalTitle"` added. Removed the nested button-in-button (cards no longer carry `role=button`+tabindex around the real "Read full bio" `<button>`); mouse-click convenience retained. "Read full bio" buttons given unique `aria-label`s per person.
+- **1.1.1** — decorative monogram placeholders (`.mono` A/N) marked `aria-hidden`; decorative arrows `aria-hidden`.
+- **2.4.4** — dead `href="#"` form buttons (Anesthesia Consent / New Client) gated to the existing disabled-CTA pattern until JotForm is wired (no longer jump to top).
+
+**Already-good (confirmed, no change needed):** `lang="en"`, unique descriptive `<title>`s, heading order (h1→h2→h3, no skips), all content `<img>` have alt, decorative SVGs/hero video `aria-hidden`, reduced-motion handling, copper-button navy text, footer/body text contrast.
+
+**Artifacts:** `a11y-preview.html` (internal before/after visual of every change — remove at launch with Feedbucket). Verification screenshots in `assets/screenshots/` (`a11y-preview.png`, `verify-team.png`, `verify-dental-care.png`).
+**⚠️ Note:** since `index.html` = a copy of `team.html`, any future team-page edit must be re-mirrored to `index.html`.
+
 ### 2026-06-03 — Feedbucket widget added to preview (Brees)
 - Added the **Feedbucket** client-feedback script to `<head>` on all 5 pages (index, team, services, dental-care, wellness-preventive-care). Key: `WVqHB42r4QIPaLzRa5k1`. Marked "preview only" in a comment.
 - ⚠️ **Launch checklist:** remove the Feedbucket script before going live (staging/review tool, not for the public site).

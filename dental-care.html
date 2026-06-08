@@ -67,7 +67,7 @@
 
   /* Feature grid — BEIGE light band (warm break in the dark page) */
   .feat-wrap { background: var(--sand); }
-  .feat-wrap .eyebrow { color: var(--copper-deep); }
+  .feat-wrap .eyebrow { color: var(--copper-on-sand); }
   .feat-wrap .feat-head h2 { color: var(--ink-900); }
   .feat-wrap .feat-head p { color: rgba(8,40,56,.74); }
   .feat-head { max-width: 640px; margin-bottom: clamp(28px, 4vw, 48px); }
@@ -228,6 +228,7 @@
 </script>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to main content</a>
 
 <!-- ===== Header ===== -->
 <header id="hdr">
@@ -256,7 +257,7 @@
       <a class="soon" aria-disabled="true">Home</a>
       <a href="team.html">Team</a>
       <div class="has-sub">
-        <a href="services.html" class="sub-toggle active">Services <svg class="caret" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></a>
+        <a href="services.html" class="sub-toggle active" aria-haspopup="true">Services <svg class="caret" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></a>
         <div class="submenu">
           <a href="wellness-preventive-care.html">Wellness &amp; Preventive Care</a>
           <a href="dental-care.html" class="active">Dental Care</a>
@@ -273,9 +274,11 @@
       <a class="m-only" href="https://jacksonveterinaryclinic.ourvet.com" target="_blank" rel="noopener">Online Store</a>
       <a class="btn" role="button" aria-disabled="true" onclick="return false">Request Appointment <span class="btn-arrow" aria-hidden="true">→</span></a>
     </nav>
-    <div class="burger" id="burger" aria-label="Menu" role="button" tabindex="0"><span></span><span></span><span></span></div>
+    <button type="button" class="burger" id="burger" aria-label="Open menu" aria-controls="menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </header>
+
+<main id="main" tabindex="-1">
 
 <!-- ===== Hero ===== -->
 <section class="hero">
@@ -365,7 +368,7 @@
       <div class="visit-item">
         <h3>Before the procedure</h3>
         <p>If you would like a printable copy of our anesthesia permission form to fill out and bring in at the time of your appointment, you can request one here. If you do not bring one in then you will be asked to fill one out at our office.</p>
-        <a href="#" class="btn btn-ghost">Anesthesia Consent Form</a>
+        <a class="btn btn-ghost" role="button" aria-disabled="true" onclick="return false">Anesthesia Consent Form</a>
       </div>
     </div>
   </div>
@@ -380,6 +383,8 @@
     <a class="btn" role="button" aria-disabled="true" onclick="return false">Request an Appointment</a>
   </div>
 </section>
+
+</main>
 
 <!-- ===== Footer ===== -->
 <footer>
@@ -423,10 +428,13 @@
   onScroll(); window.addEventListener('scroll', onScroll, { passive: true });
   const burger = document.getElementById('burger');
   const menu = document.getElementById('menu');
-  const toggleMenu = () => menu.classList.toggle('open');
-  burger.addEventListener('click', toggleMenu);
-  burger.addEventListener('keypress', e => { if (e.key === 'Enter') toggleMenu(); });
-  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
+  const setMenu = (open) => {
+    menu.classList.toggle('open', open);
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  };
+  burger.addEventListener('click', () => setMenu(!menu.classList.contains('open')));
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
   const io = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach((el, i) => { el.style.transitionDelay = (Math.min(i % 3, 2) * 0.06) + 's'; io.observe(el); });
 </script>
@@ -495,5 +503,6 @@
   }
 })();
 </script>
+<script src="assets/js/a11y.js"></script>
 </body>
 </html>
