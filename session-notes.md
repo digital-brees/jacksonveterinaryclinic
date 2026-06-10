@@ -213,6 +213,13 @@ All color lives in `assets/css/tokens.css`, extracted from the 1981 logo. team.h
 
 ## Session Log
 
+### 2026-06-10 — Natalie → placeholder team member (Brees)
+- Per Brees: Natalie does NOT actually work at Jackson Vet — she was a placeholder. Converted her card + bio modal to a generic placeholder on **both `team.html` and `index.html`** (index = copy of team, must stay mirrored).
+- Card: name → **Warren Ipsum**, credential → **Team Member Placeholder**, blurb → "This is a placeholder team member. Bio and details to be replaced with a real team member.", monogram **N → W**.
+- Bio modal (`BIOS.natalie` object): name/cred updated; real Iowa/Cedar Falls bio replaced with placeholder + lorem text. Kept the internal `data-bio="natalie"` key (lookup ID only, not user-facing) to avoid a two-spot rename with no visible benefit.
+- Resolves the long-standing flag from 2026-06-01 (source bio's "Willow Creek / Cedar Falls / eastern Iowa" details were never confirmed for Natalie).
+- Committed + pushed → Vercel auto-deploy.
+
 ### 2026-06-08 — WCAG 2.1 AA / ADA compliance pass (Brees)
 Full accessibility sweep across all 5 built pages (index, team, services, dental-care, wellness-preventive-care). `index.html` re-synced from `team.html` after edits (still a copy).
 
